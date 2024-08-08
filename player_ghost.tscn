@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://2jlp7xlnh8jy"]
+
+[ext_resource type="Texture2D" uid="uid://db7iv8r027la0" path="res://assets/pixelpen/Ghost.png" id="1_5o1og"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7r0d"]
+radius = 4.12311
+
+[node name="PlayerGhost" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_5o1og")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j7r0d")
