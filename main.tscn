@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl7xt5turn24"]
+[gd_scene load_steps=3 format=3 uid="uid://cl7xt5turn24"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_dukg6"]
+[ext_resource type="Texture2D" uid="uid://bssjapyh1u4o7" path="res://Gray.png" id="2_go6bh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dukg6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_go6bh")
+stretch_mode = 1
