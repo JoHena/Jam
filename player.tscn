@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfj3wgisw4sow"]
+
+[ext_resource type="Script" path="res://state_machine.gd" id="2_rei1t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvmen"]
+
+[node name="player" type="CharacterBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dvmen")
+
+[node name="state_machine" type="Node" parent="."]
+script = ExtResource("2_rei1t")
+
+[node name="idle" type="Node" parent="state_machine"]
+
+[node name="move" type="Node" parent="state_machine"]
