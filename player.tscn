@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfj3wgisw4sow"]
+[gd_scene load_steps=8 format=3 uid="uid://cfj3wgisw4sow"]
 
 [ext_resource type="Texture2D" uid="uid://b7on2aokchd0o" path="res://Player/Sprites/Ghosts.png" id="1_f16vo"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_t88nv"]
@@ -8,7 +8,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvmen"]
 size = Vector2(17, 16)
 
+[sub_resource type="Gradient" id="Gradient_r1dus"]
+offsets = PackedFloat32Array(0, 0.681818)
+colors = PackedColorArray(0, 0.32549, 0.870588, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kfppb"]
+gradient = SubResource("Gradient_r1dus")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_t88nv")
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -16,6 +26,7 @@ texture = ExtResource("1_f16vo")
 hframes = 2
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_dvmen")
 
@@ -25,3 +36,9 @@ starting_state = NodePath("move")
 
 [node name="move" type="Node" parent="state_machine"]
 script = ExtResource("4_6rod6")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 2
+position = Vector2(-2, 0)
+scale = Vector2(0.640625, 0.492187)
+texture = SubResource("GradientTexture2D_kfppb")
