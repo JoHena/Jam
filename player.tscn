@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfj3wgisw4sow"]
+[gd_scene load_steps=4 format=3 uid="uid://cfj3wgisw4sow"]
 
+[ext_resource type="Texture2D" uid="uid://b7on2aokchd0o" path="res://Player/Sprites/Ghosts.png" id="1_5r1m4"]
 [ext_resource type="Script" path="res://state_machine.gd" id="2_rei1t"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvmen"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0awmt"]
 
 [node name="player" type="CharacterBody2D"]
 
 [node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_5r1m4")
+hframes = 2
 
 [node name="collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_dvmen")
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_0awmt")
 
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource("2_rei1t")
