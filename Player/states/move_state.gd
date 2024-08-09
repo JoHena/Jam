@@ -13,6 +13,6 @@ func process_physics(_delta: float) -> State:
 	parent.move_and_slide()
 	
 	if direction.x != 0:
-		parent.sprite.flip_h = direction.x > 0
+		parent.sprite.flip_h = direction.x < 0
 
 	return null
