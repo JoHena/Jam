@@ -50,6 +50,14 @@ down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Walls"
+2d_physics/layer_2="Ennemies"
+2d_physics/layer_3="NPCs"
+2d_physics/layer_4="Player"
+2d_physics/layer_5="Shadow Walls"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
