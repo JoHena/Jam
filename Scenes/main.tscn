@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cefo4b1yx563v"]
+[gd_scene load_steps=34 format=3 uid="uid://cefo4b1yx563v"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_dukg6"]
 [ext_resource type="Shader" path="res://Shaders/main.gdshader" id="2_2fbxr"]
@@ -8,14 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://b7on2aokchd0o" path="res://Player/Sprites/Ghosts.png" id="5_ykhat"]
 [ext_resource type="PackedScene" uid="uid://cds5lys1yaeyb" path="res://Civilians/Civ.tscn" id="6_fojta"]
 [ext_resource type="Shader" path="res://Shaders/fog.gdshader" id="7_ye6dy"]
+[ext_resource type="Shader" path="res://Shaders/shadowsOverlay.gdshader" id="9_kol1l"]
+[ext_resource type="Texture2D" uid="uid://c2tivjubwcjii" path="res://icon.svg" id="10_3htxx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1xig"]
-shader = ExtResource("2_2fbxr")
-shader_parameter/crt_curve = 0.512
-shader_parameter/crt_scan_line_color = 0.552
-shader_parameter/aperture_grille_rate = 0.845
-shader_parameter/rf_switch_esque_blur = 1.0
-shader_parameter/white_noise_rate = 0.0
+shader = ExtResource("9_kol1l")
+shader_parameter/flash_state = 0.5
+shader_parameter/nb_steps = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_twauu"]
 polygon = PackedVector2Array(-4, -4, -4, 4, -2, 4, -2, -2, 4, -2, 4, -4)
@@ -591,6 +590,15 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.383
 shader_parameter/offset = 0.0
 
+[sub_resource type="Gradient" id="Gradient_6crqv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ap5vo"]
+gradient = SubResource("Gradient_6crqv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.784483, 0.133621)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmumx"]
 shader = ExtResource("2_2fbxr")
 shader_parameter/crt_curve = 0.007
@@ -624,14 +632,10 @@ shader_parameter/density = 0.25
 shader_parameter/speed = Vector2(0.02, 0.01)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_o2u5y")
 
-[sub_resource type="Gradient" id="Gradient_6crqv"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ap5vo"]
-gradient = SubResource("Gradient_6crqv")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.784483, 0.133621)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hljw6"]
+shader = ExtResource("9_kol1l")
+shader_parameter/flash_state = 0.95
+shader_parameter/nb_steps = 6
 
 [node name="Main" type="Node2D"]
 material = SubResource("ShaderMaterial_d1xig")
@@ -655,6 +659,12 @@ layer_0/tile_data = PackedInt32Array(56, 262144, 5, 65592, 393216, 5, 131128, 32
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(150, 55)
+
+[node name="PointLight2D2" type="PointLight2D" parent="Player"]
+energy = 1.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_ap5vo")
+texture_scale = 1.5
 
 [node name="CRT" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -723,12 +733,8 @@ offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0.54902, 0.298039, 0.823529, 0.843137)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.69, 0.69, 0.69, 1)
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(93, 70)
-energy = 1.5
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_ap5vo")
-texture_scale = 1.5
+[node name="Shadows" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hljw6")
+position = Vector2(317.5, 181)
+scale = Vector2(5.21094, 2.96875)
+texture = ExtResource("10_3htxx")
