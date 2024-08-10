@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://g08jo30dwv6x"]
+
+[ext_resource type="Texture2D" uid="uid://c3q2j6ncvpp2n" path="res://TileSheet/colored_tilemap.png" id="1_oiwb0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5e7gy"]
+radius = 3.0
+height = 8.0
+
+[node name="EnemyKnight" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oiwb0")
+region_enabled = true
+region_rect = Rect2(54, 0, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5e7gy")
