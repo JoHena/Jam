@@ -1,11 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
-@onready
-var sprite = $sprite
-
-@onready
-var state_machine = $state_machine
+@onready var sprite = $sprite
+@onready var state_machine = $state_machine
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,

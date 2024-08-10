@@ -1,31 +1,163 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfj3wgisw4sow"]
+[gd_scene load_steps=20 format=3 uid="uid://cfj3wgisw4sow"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_t88nv"]
 [ext_resource type="Script" path="res://state_machine.gd" id="2_rei1t"]
 [ext_resource type="Texture2D" uid="uid://dfk11a7cvy182" path="res://Player/Sprites/pixil-frame-0(1).png" id="2_wd16q"]
 [ext_resource type="Script" path="res://Player/states/move_state.gd" id="4_6rod6"]
 
+[sub_resource type="Animation" id="Animation_6ngh6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.174533]
+}
+
+[sub_resource type="Animation" id="Animation_6c61w"]
+resource_name = "ghostly_wave"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.735, 1), Vector2(1.28, 0.38)]
+}
+
+[sub_resource type="Animation" id="Animation_lmc1s"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0.83), Vector2(1, 0.975)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.174533, 0.174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5jbfy"]
+_data = {
+"RESET": SubResource("Animation_6ngh6"),
+"ghostly_wave": SubResource("Animation_6c61w"),
+"idle": SubResource("Animation_lmc1s")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4euc"]
+animation = &"ghostly_wave"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gnvl4"]
+animation = &"ghostly_wave"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lv4yr"]
+animation = &"ghostly_wave"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rqc7m"]
+animation = &"ghostly_wave"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4hs76"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qwvak"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_o4euc")
+blend_point_0/pos = Vector2(-1, 0.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_gnvl4")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_lv4yr")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_rqc7m")
+blend_point_3/pos = Vector2(0, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_4hs76")
+blend_point_4/pos = Vector2(0, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lm4ua"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_85w7n"]
+states/Move/node = SubResource("AnimationNodeBlendSpace2D_qwvak")
+states/Move/position = Vector2(369, 93)
+states/Start/position = Vector2(193, 100)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_lm4ua")]
+graph_offset = Vector2(-131, 6)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6evk"]
 radius = 4.0
 
-[sub_resource type="Gradient" id="Gradient_32u2a"]
-offsets = PackedFloat32Array(0, 0.681818)
-colors = PackedColorArray(0, 0.32549, 0.870588, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_6crqv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kfppb"]
-gradient = SubResource("Gradient_32u2a")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_evnia"]
+gradient = SubResource("Gradient_6crqv")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.784483, 0.133621)
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_t88nv")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../sprite")
+libraries = {
+"": SubResource("AnimationLibrary_5jbfy")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../sprite")
+tree_root = SubResource("AnimationNodeStateMachine_85w7n")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Move/blend_position = Vector2(0, 0.006)
+
 [node name="sprite" type="Sprite2D" parent="."]
+skew = -0.174533
 texture = ExtResource("2_wd16q")
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_h6evk")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
@@ -35,13 +167,13 @@ starting_state = NodePath("move")
 [node name="move" type="Node" parent="state_machine"]
 script = ExtResource("4_6rod6")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-z_index = 2
-position = Vector2(-2, 0)
-scale = Vector2(0.8, 0.8)
-texture = SubResource("GradientTexture2D_kfppb")
-offset = Vector2(2, 0)
-texture_scale = 0.3
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="Ghost_Light" type="PointLight2D" parent="."]
+scale = Vector2(0.5, 0.5)
+color = Color(0, 0.558119, 0.889907, 0.501961)
+energy = 1.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_evnia")
+texture_scale = 1.5

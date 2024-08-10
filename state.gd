@@ -6,6 +6,7 @@ var animation_name: String
 @export
 var move_speed: float = 300
 
+
 # Hold a reference to the parent so that it can be controlled by the state
 var parent: Player
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cefo4b1yx563v"]
+[gd_scene load_steps=29 format=3 uid="uid://cefo4b1yx563v"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_dukg6"]
 [ext_resource type="Shader" path="res://Shaders/main.gdshader" id="2_2fbxr"]
@@ -599,14 +599,14 @@ shader_parameter/aperture_grille_rate = 1.0
 shader_parameter/rf_switch_esque_blur = 0.245
 shader_parameter/white_noise_rate = 0.05
 
-[sub_resource type="Gradient" id="Gradient_s7fvv"]
-offsets = PackedFloat32Array(0, 0.681818)
-colors = PackedColorArray(1, 0.32549, 0.372549, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_01hnm"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q07kb"]
-gradient = SubResource("Gradient_s7fvv")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ap5vo"]
+gradient = SubResource("Gradient_01hnm")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.784483, 0.133621)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_frad8"]
 frequency = 0.0075
@@ -623,15 +623,6 @@ shader = ExtResource("7_ye6dy")
 shader_parameter/density = 0.25
 shader_parameter/speed = Vector2(0.02, 0.01)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_o2u5y")
-
-[sub_resource type="Gradient" id="Gradient_6crqv"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ap5vo"]
-gradient = SubResource("Gradient_6crqv")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.784483, 0.133621)
 
 [node name="Main" type="Node2D"]
 material = SubResource("ShaderMaterial_d1xig")
@@ -654,7 +645,8 @@ layer_0/tile_data = PackedInt32Array(56, 262144, 5, 65592, 393216, 5, 131128, 32
 [node name="Player" parent="." instance=ExtResource("3_483kq")]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(150, 55)
+position = Vector2(205, 171)
+up_direction = Vector2(0, 1)
 
 [node name="CRT" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -665,31 +657,23 @@ texture = ExtResource("5_ykhat")
 
 [node name="Lighting" type="Node" parent="."]
 
-[node name="torch1" type="PointLight2D" parent="Lighting"]
-position = Vector2(116, 101)
-scale = Vector2(0.53125, 0.492187)
-texture = SubResource("GradientTexture2D_q07kb")
-texture_scale = 0.8
-
-[node name="torch2" type="PointLight2D" parent="Lighting"]
-position = Vector2(92, 101)
-scale = Vector2(0.53125, 0.492187)
-texture = SubResource("GradientTexture2D_q07kb")
-texture_scale = 0.8
-
 [node name="fire" type="Node" parent="Lighting"]
 
-[node name="CampFire" type="PointLight2D" parent="Lighting/fire"]
-position = Vector2(180, 142)
-scale = Vector2(0.53125, 0.492187)
-texture = SubResource("GradientTexture2D_q07kb")
-texture_scale = 3.0
+[node name="campFire" type="PointLight2D" parent="Lighting/fire"]
+position = Vector2(309, 101)
+color = Color(1, 0, 0, 0.501961)
+energy = 1.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_ap5vo")
+texture_scale = 1.5
 
-[node name="CampFire2" type="PointLight2D" parent="Lighting/fire"]
-position = Vector2(310, 101)
-scale = Vector2(0.53125, 0.492187)
-texture = SubResource("GradientTexture2D_q07kb")
-texture_scale = 3.0
+[node name="campFire2" type="PointLight2D" parent="Lighting/fire"]
+position = Vector2(180, 149)
+color = Color(1, 0, 0, 0.501961)
+energy = 1.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_ap5vo")
+texture_scale = 1.5
 
 [node name="Civilians" type="Node" parent="."]
 
@@ -713,6 +697,7 @@ position = Vector2(272, 71)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = 3
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(640, 360)
@@ -725,10 +710,3 @@ color = Color(0.54902, 0.298039, 0.823529, 0.843137)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69, 0.69, 0.69, 1)
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(93, 70)
-energy = 1.5
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_ap5vo")
-texture_scale = 1.5
