@@ -16,7 +16,7 @@ enum civ_state {
 } 
 
 # Movement speed
-@export var speed = 10
+@export var SPEED: float = 10
 
 # Animation player
 @onready var anim = $AnimationPlayer
@@ -29,14 +29,14 @@ enum civ_state {
 func _physics_process(_delta):
 	match current_state:
 		civ_state.move_left:
-			move_left()
+			velocity = Vector2.LEFT * SPEED
 		civ_state.move_right:
-			move_right()
+			velocity = Vector2.RIGHT * SPEED
 		civ_state.move_up:
-			move_up()
+			velocity = Vector2.UP * SPEED
 		civ_state.move_down:
-			move_down()
-
+			velocity = Vector2.DOWN * SPEED
+			
 	move_and_slide()
 
 
@@ -46,30 +46,7 @@ func random_direction():
 	current_state = randi() % 4 
 	random_timer()
 
-
 # Randomizes the timer for changing direction 
 
 func random_timer():
 	timer.wait_time = clamp(randi() % 3, 1, 3)
-
-# Move and animate
-
-func move_right():
-	velocity = Vector2.RIGHT * speed
-	anim.play('walk')
-	pass
-
-func move_left():
-	velocity = Vector2.LEFT * speed
-	anim.play('walk')
-	pass
-
-func move_up():
-	velocity = Vector2.UP * speed
-	anim.play('walk')
-	pass
-
-func move_down():
-	velocity = Vector2.DOWN * speed
-	anim.play('walk')
-	pass

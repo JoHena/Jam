@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://cfj3wgisw4sow"]
+[gd_scene load_steps=34 format=3 uid="uid://cfj3wgisw4sow"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_t88nv"]
 [ext_resource type="Script" path="res://state_machine.gd" id="2_rei1t"]
 [ext_resource type="Texture2D" uid="uid://dfk11a7cvy182" path="res://Player/Sprites/pixil-frame-0(1).png" id="2_wd16q"]
 [ext_resource type="Script" path="res://Player/states/move_state.gd" id="4_6rod6"]
+[ext_resource type="Script" path="res://Player/states/scream.gd" id="5_ng718"]
 
 [sub_resource type="Animation" id="Animation_6ngh6"]
 length = 0.001
@@ -30,6 +31,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-0.174533]
+}
+
+[sub_resource type="Animation" id="Animation_07lpv"]
+resource_name = "Scare"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0.305), Vector2(1, 0.74), Vector2(1, 2.688), Vector2(1, 2.033), Vector2(1, 0.9962)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.328122, 0.237365, 0.235619]
 }
 
 [sub_resource type="Animation" id="Animation_6c61w"]
@@ -79,6 +108,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5jbfy"]
 _data = {
 "RESET": SubResource("Animation_6ngh6"),
+"Scare": SubResource("Animation_07lpv"),
 "ghostly_wave": SubResource("Animation_6c61w"),
 "idle": SubResource("Animation_lmc1s")
 }
@@ -112,14 +142,47 @@ blend_point_4/pos = Vector2(0, 0)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7pqlf"]
+animation = &"Scare"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hbn23"]
+animation = &"Scare"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8osfp"]
+animation = &"Scare"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s1blp"]
+animation = &"Scare"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_70wjg"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_7pqlf")
+blend_point_0/pos = Vector2(0, 0.9)
+blend_point_1/node = SubResource("AnimationNodeAnimation_hbn23")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_8osfp")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_s1blp")
+blend_point_3/pos = Vector2(-1, 0)
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lm4ua"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h05xp"]
+advance_mode = 2
+advance_condition = &"is_screaming"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qbky4"]
+reset = false
+switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_85w7n"]
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_qwvak")
-states/Move/position = Vector2(369, 93)
-states/Start/position = Vector2(193, 100)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_lm4ua")]
+states/Move/position = Vector2(415, 144)
+states/Scare/node = SubResource("AnimationNodeBlendSpace2D_70wjg")
+states/Scare/position = Vector2(659, 144)
+states/Start/position = Vector2(187, 100)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_lm4ua"), "Move", "Scare", SubResource("AnimationNodeStateMachineTransition_h05xp"), "Scare", "Move", SubResource("AnimationNodeStateMachineTransition_qbky4")]
 graph_offset = Vector2(-131, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6evk"]
@@ -133,6 +196,64 @@ gradient = SubResource("Gradient_6crqv")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.784483, 0.133621)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i7fwc"]
+radius = 18.7916
+
+[sub_resource type="Animation" id="Animation_gjvfy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.214557, 1, 0.951185, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rqsha"]
+resource_name = "spook"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.214557, 1, 0.951185, 1), Color(0.572549, 0.482353, 1, 1), Color(0.371646, 0.933333, 0.960948, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ve6j6"]
+resource_name = "spook_full"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.214557, 1, 0.951185, 1), Color(0.572549, 0.482353, 1, 1), Color(0.371646, 0.933333, 0.960948, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j8pcf"]
+_data = {
+"RESET": SubResource("Animation_gjvfy"),
+"spook": SubResource("Animation_rqsha"),
+"spook_full": SubResource("Animation_ve6j6")
+}
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
@@ -150,13 +271,15 @@ libraries = {
 root_node = NodePath("../sprite")
 tree_root = SubResource("AnimationNodeStateMachine_85w7n")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Move/blend_position = Vector2(0, 0.006)
+parameters/conditions/is_screaming = false
+parameters/Move/blend_position = Vector2(-0.00336701, 0.00484574)
+parameters/Scare/blend_position = Vector2(-0.0690235, 0.0132158)
 
 [node name="sprite" type="Sprite2D" parent="."]
 skew = -0.174533
 texture = ExtResource("2_wd16q")
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="hurtBox" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_h6evk")
 
@@ -166,9 +289,11 @@ starting_state = NodePath("move")
 
 [node name="move" type="Node" parent="state_machine"]
 script = ExtResource("4_6rod6")
+animation_name = null
+move_speed = null
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="scream" type="Node" parent="state_machine"]
+script = ExtResource("5_ng718")
 
 [node name="Ghost_Light" type="PointLight2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -177,3 +302,26 @@ energy = 1.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_evnia")
 texture_scale = 1.5
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_i7fwc")
+
+[node name="scaremeter" type="ProgressBar" parent="."]
+modulate = Color(0.214557, 1, 0.951185, 1)
+z_index = 5
+z_as_relative = false
+offset_left = -6.25
+offset_top = -13.75
+offset_right = 57.75
+offset_bottom = 13.25
+scale = Vector2(0.20079, 0.054093)
+show_percentage = false
+
+[node name="scare_anim" type="AnimationPlayer" parent="scaremeter"]
+libraries = {
+"": SubResource("AnimationLibrary_j8pcf")
+}
+autoplay = "spook"

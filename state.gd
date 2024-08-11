@@ -3,9 +3,11 @@ extends Node
 
 @export
 var animation_name: String
+
 @export
 var move_speed: float = 300
 
+@onready var animation_tree = $"../../AnimationTree"
 
 # Hold a reference to the parent so that it can be controlled by the state
 var parent: Player

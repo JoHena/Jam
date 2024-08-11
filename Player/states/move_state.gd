@@ -3,7 +3,8 @@ extends State
 const SPEED: float = 100
 const ACCELERATION: float = 10
 
-@onready var animation_tree = $"../../AnimationTree"
+@onready var screamArea = $"../../Area2D"
+@onready var scaremeter = $"../../scaremeter"
 
 func process_physics(_delta: float) -> State:
 	var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
@@ -16,6 +17,35 @@ func process_physics(_delta: float) -> State:
 	if direction.x != 0:
 		parent.sprite.flip_h = direction.x < 0
 
-	animation_tree.set('parameters/Move/blend_position', direction)
+	animation_tree['parameters/Move/blend_position'] = direction
 
 	return null
+
+func process_input(_event: InputEvent) -> State:
+	scream()
+	return null	
+
+
+# We do this here instead of another state to still move while screaming
+func scream():
+	if Input.is_action_just_pressed('attack'):
+		animation_tree['parameters/conditions/is_screaming'] = true
+		scareCivs(screamArea.get_overlapping_bodies())
+	else: 
+		animation_tree['parameters/conditions/is_screaming'] = false
+
+# check if body is scareable
+func scareCivs(bodys: Array):
+	for body in bodys:
+		if body.is_in_group('Civilians'):
+			if !body.is_scared:
+				handleScareMeter(body.SCARED_AMOUNT)
+			body.is_scared = true
+
+# change scare meter amount - Animates quicker on full meter
+func handleScareMeter(scare_amount: float):
+	scaremeter.value += scare_amount
+	if scaremeter.value == 100:
+		scaremeter.get_child(0).play('spook_full')
+	else:
+		scaremeter.get_child(0).play('spook')
