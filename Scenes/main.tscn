@@ -15,8 +15,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1xig"]
 shader = ExtResource("9_kol1l")
-shader_parameter/flash_state = 0.5
-shader_parameter/nb_steps = 2
+shader_parameter/scroll = Vector2(0.05, 0.05)
+shader_parameter/scroll_speed = 30.0
+shader_parameter/distortion_strength = 0.2
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_hkfhk"]
 tile_data = PackedInt32Array(0, 0, 4, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1, 262144, 196608, 4, 1, 65536, 0, 65537, 917504, 3, 131073, 65536, 1, 196609, 917504, 3, 262145, 196608, 4, 2, 65536, 0, 65538, 65536, 1, 131074, 65536, 1, 196610, 65536, 1, 262146, 327680, 2, 3, 65536, 0, 65539, 917504, 3, 131075, 65536, 1, 196611, 917504, 3, 262147, 196608, 4, 4, 65536, 4, 65540, 196608, 1, 131076, 196608, 1, 196612, 196608, 1, 262148, 196608, 4)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://cfj3wgisw4sow"]
+[gd_scene load_steps=43 format=3 uid="uid://cfj3wgisw4sow"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_t88nv"]
 [ext_resource type="Script" path="res://state_machine.gd" id="2_rei1t"]
 [ext_resource type="Texture2D" uid="uid://dfk11a7cvy182" path="res://Player/Sprites/pixil-frame-0(1).png" id="2_wd16q"]
 [ext_resource type="Script" path="res://Player/states/move_state.gd" id="4_6rod6"]
 [ext_resource type="Script" path="res://Player/states/scream.gd" id="5_ng718"]
+[ext_resource type="Shader" path="res://Shaders/shadowsOverlay.gdshader" id="6_csv3y"]
 
 [sub_resource type="Animation" id="Animation_6ngh6"]
 length = 0.001
@@ -113,34 +114,8 @@ _data = {
 "idle": SubResource("Animation_lmc1s")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4euc"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t0rq8"]
 animation = &"ghostly_wave"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gnvl4"]
-animation = &"ghostly_wave"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lv4yr"]
-animation = &"ghostly_wave"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rqc7m"]
-animation = &"ghostly_wave"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4hs76"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qwvak"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_o4euc")
-blend_point_0/pos = Vector2(-1, 0.1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_gnvl4")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_lv4yr")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_rqc7m")
-blend_point_3/pos = Vector2(0, -1)
-blend_point_4/node = SubResource("AnimationNodeAnimation_4hs76")
-blend_point_4/pos = Vector2(0, 0)
-min_space = Vector2(-1, -1.1)
-max_space = Vector2(1, 1.1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7pqlf"]
 animation = &"Scare"
@@ -164,25 +139,24 @@ blend_point_2/pos = Vector2(0, -0.9)
 blend_point_3/node = SubResource("AnimationNodeAnimation_s1blp")
 blend_point_3/pos = Vector2(-1, 0)
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lm4ua"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h05xp"]
-advance_mode = 2
-advance_condition = &"is_screaming"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qbky4"]
-reset = false
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l432e"]
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rf275"]
+advance_mode = 2
+advance_condition = &"is_screaming"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1of4s"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_85w7n"]
-states/Move/node = SubResource("AnimationNodeBlendSpace2D_qwvak")
-states/Move/position = Vector2(415, 144)
+states/Move/node = SubResource("AnimationNodeAnimation_t0rq8")
+states/Move/position = Vector2(293, 174)
 states/Scare/node = SubResource("AnimationNodeBlendSpace2D_70wjg")
 states/Scare/position = Vector2(659, 144)
-states/Start/position = Vector2(187, 100)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_lm4ua"), "Move", "Scare", SubResource("AnimationNodeStateMachineTransition_h05xp"), "Scare", "Move", SubResource("AnimationNodeStateMachineTransition_qbky4")]
+states/Start/position = Vector2(73, 169)
+transitions = ["Scare", "Move", SubResource("AnimationNodeStateMachineTransition_l432e"), "Move", "Scare", SubResource("AnimationNodeStateMachineTransition_rf275"), "Start", "Move", SubResource("AnimationNodeStateMachineTransition_1of4s")]
 graph_offset = Vector2(-131, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6evk"]
@@ -255,6 +229,268 @@ _data = {
 "spook_full": SubResource("Animation_ve6j6")
 }
 
+[sub_resource type="Gradient" id="Gradient_mmbgg"]
+offsets = PackedFloat32Array(0.657407, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wdn1y"]
+gradient = SubResource("Gradient_mmbgg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_r2kyp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.301887, 0.153846), 0.174726, 0.174726, 0, 0, Vector2(0.504717, 0.318681), 0.0, 0.0, 0, 0, Vector2(0.863208, 0.21978), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_25o8g"]
+curve = SubResource("Curve_r2kyp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hq8ib"]
+noise_type = 0
+frequency = 0.0264
+domain_warp_enabled = true
+domain_warp_fractal_octaves = 1
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4ljf"]
+seamless = true
+noise = SubResource("FastNoiseLite_hq8ib")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tp7lo"]
+shader = ExtResource("6_csv3y")
+shader_parameter/scroll = Vector2(0.003, 0.002)
+shader_parameter/scroll_speed = 10.0
+shader_parameter/distortion_strength = 0.017
+shader_parameter/noise = SubResource("NoiseTexture2D_g4ljf")
+shader_parameter/curve = SubResource("CurveTexture_25o8g")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_plcj2"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rv7hp"]
+noise = SubResource("FastNoiseLite_plcj2")
+
+[sub_resource type="Animation" id="Animation_lq1gi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:skew")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5qdu3"]
+resource_name = "shadow_enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(20, 20)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:skew")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_d27n3"]
+resource_name = "shadow_exit"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.49),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 0.03), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.64),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(20, 20), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.13),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.56905]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_srpqq"]
+_data = {
+"RESET": SubResource("Animation_lq1gi"),
+"shadow_enter": SubResource("Animation_5qdu3"),
+"shadow_exit": SubResource("Animation_d27n3")
+}
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
 collision_layer = 8
@@ -272,7 +508,6 @@ root_node = NodePath("../sprite")
 tree_root = SubResource("AnimationNodeStateMachine_85w7n")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_screaming = false
-parameters/Move/blend_position = Vector2(-0.00336701, 0.00484574)
 parameters/Scare/blend_position = Vector2(-0.0690235, 0.0132158)
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -289,8 +524,6 @@ starting_state = NodePath("move")
 
 [node name="move" type="Node" parent="state_machine"]
 script = ExtResource("4_6rod6")
-animation_name = null
-move_speed = null
 
 [node name="scream" type="Node" parent="state_machine"]
 script = ExtResource("5_ng718")
@@ -325,3 +558,20 @@ libraries = {
 "": SubResource("AnimationLibrary_j8pcf")
 }
 autoplay = "spook"
+
+[node name="ShadowContainer" type="Sprite2D" parent="."]
+clip_children = 1
+z_index = 6
+texture = SubResource("GradientTexture2D_wdn1y")
+
+[node name="ShadowOverlay" type="Sprite2D" parent="ShadowContainer"]
+visible = false
+z_index = 5
+material = SubResource("ShaderMaterial_tp7lo")
+scale = Vector2(1e-05, 1e-05)
+texture = SubResource("NoiseTexture2D_rv7hp")
+
+[node name="shadow_anim" type="AnimationPlayer" parent="ShadowContainer/ShadowOverlay"]
+libraries = {
+"": SubResource("AnimationLibrary_srpqq")
+}

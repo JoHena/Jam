@@ -33,7 +33,7 @@ func checkScaredState():
 		anim.play('walk')
 		SPEED = 10
 
-# When scared show the points gained
+# When scared show the points gained	
 func showScarePoints():
 	scare_label.text = "+" + str(SCARED_AMOUNT)
 	scare_anim.play('scared_score')
