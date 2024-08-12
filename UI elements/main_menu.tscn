@@ -235,9 +235,10 @@ visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Options" parent="VBoxContainer/Options_Container" node_paths=PackedStringArray("anim") instance=ExtResource("4_kq5ks")]
+[node name="Options" parent="VBoxContainer/Options_Container" node_paths=PackedStringArray("anim", "sound_queue") instance=ExtResource("4_kq5ks")]
 layout_mode = 2
 anim = NodePath("../../../AnimationPlayer")
+sound_queue = NodePath("../../../SoundQueue")
 
 [node name="Main_Container" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
