@@ -1,20 +1,22 @@
 extends civ_movement
 
+@export var SCARES_TILL_DEATH: float = 3
 @export var SCARED_AMOUNT: float = 20
-@export var SCARED_SPEED = 30					
-@export var is_scared: bool = false :
-	set(value):
-		if !is_scared:
-			showScarePoints()
-		is_scared = value
+@export var SCARED_SPEED = 30			
+@export var is_scared: bool = false
 
-@onready var scare_label = $scare_score
-@onready var scare_anim = $scare_score/scare_score_anim
+var TIMES_SCARED: float = 0
+var POINTS_SCENE = preload("res://Civilians/scare_score.tscn")
 
 # On start pick a random direction to walk to
 func _ready():
+	var random_skin = randi() % 3 
+	if random_skin == 2: # This is a temp fix sice civs and guards are mixed in the sprite sheet
+		sprite.frame = 4
+		return
+	sprite.frame = random_skin
 	random_direction()
-
+					
 func _physics_process(_delta):
 	super(_delta)
 	checkScaredState()
@@ -26,14 +28,26 @@ func _on_timer_timeout():
 
 # Check if the entity is scared
 func checkScaredState():
+	if TIMES_SCARED >= SCARES_TILL_DEATH:
+		anim.play('death')
+		current_state = 4 # move_none - Stops moving
+		return
+		
 	if is_scared: 
 		anim.play('scared')
-		SPEED = SCARED_SPEED
+		anim.speed_scale = TIMES_SCARED + 1
+		SPEED = SCARED_SPEED * TIMES_SCARED
 	else:
 		anim.play('walk')
-		SPEED = 10
+		SPEED = 10 
 
 # When scared show the points gained	
 func showScarePoints():
-	scare_label.text = "+" + str(SCARED_AMOUNT)
-	scare_anim.play('scared_score')
+	var instance = POINTS_SCENE.instantiate()
+	instance.text = "+" + str(SCARED_AMOUNT)
+	add_child(instance)
+
+# When death animation finishes delete itself
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == 'death':
+		queue_free()

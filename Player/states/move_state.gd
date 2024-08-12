@@ -1,12 +1,22 @@
 extends State
 
-const SPEED: float = 100
-const ACCELERATION: float = 10
+# Exports
+@export var SPEED: float = 100
+@export var ACCELERATION: float = 10
+@export var SHADOW_SPOOK_DRAIN_AMOUNT: float = 30	
+@export var SHADOW_TIMER: Timer
+
+# Logic
 var IS_SHADOW: bool = false
 
+# onready
 @onready var screamArea = $"../../Area2D"
 @onready var scaremeter = $"../../scaremeter"
+@onready var shadow_anim = $"../../ShadowContainer/ShadowOverlay/shadow_anim"
 
+func enter():
+	shadow_anim.play('shadow_start')
+	
 func process_physics(_delta: float) -> State:
 	var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
 
@@ -18,12 +28,14 @@ func process_physics(_delta: float) -> State:
 	if direction.x != 0:
 		parent.sprite.flip_h = direction.x < 0
 
+	animation_tree['parameters/Move/blend_position'] = direction
+
 	return null
 
 func process_input(_event: InputEvent) -> State:
 	scream()
+	shadow_step()
 	return null	
-
 
 # We do this here instead of another state to still move while screaming
 func scream():
@@ -33,21 +45,45 @@ func scream():
 	else: 
 		animation_tree['parameters/conditions/is_screaming'] = false
 
-	if Input.is_action_just_pressed('shadow_step'):
-		if IS_SHADOW:
-			IS_SHADOW = false
-			$"../../ShadowContainer/ShadowOverlay/shadow_anim".play("shadow_exit")
-		else: 
-			IS_SHADOW = true
-			$"../../ShadowContainer/ShadowOverlay/shadow_anim".play("shadow_enter")
+func shadow_step():
+	if IS_SHADOW:
+		if Input.is_action_just_pressed('shadow_step'):
+			switch_colission_layers()
+			
+		if scaremeter.value == 0:
+			switch_colission_layers()
+			
+	elif Input.is_action_just_pressed('shadow_step'):
+		if (scaremeter.value - SHADOW_SPOOK_DRAIN_AMOUNT) >= 0:
+			switch_colission_layers()
+
+func switch_colission_layers():
+	if IS_SHADOW:
+		# If is shadow return to normal 
+		SHADOW_TIMER.stop()
+		IS_SHADOW = false
+		shadow_anim.play("shadow_exit")
+		# Set interactable masks
+		parent.set_collision_mask_value(1, true) # Can now collide with 
+		screamArea.set_collision_mask_value(3, true)
+	else: 
+		SHADOW_TIMER.start()
+		# If not shadow enter shadows 
+		IS_SHADOW = true
+		shadow_anim.play("shadow_enter")
+		# Set mask interactions
+		parent.set_collision_mask_value(1, false) # Can't interact with walls
+		screamArea.set_collision_mask_value(3, false) # Can't interact with NPC's
 
 # check if body is scareable
 func scareCivs(bodys: Array):
 	for body in bodys:
 		if body.is_in_group('Civilians'):
-			if !body.is_scared:
+			if body.TIMES_SCARED < body.SCARES_TILL_DEATH:
+				body.showScarePoints()
 				handleScareMeter(body.SCARED_AMOUNT)
 			body.is_scared = true
+			body.TIMES_SCARED += 1
 
 # change scare meter amount - Animates quicker on full meter
 func handleScareMeter(scare_amount: float):
@@ -56,3 +92,7 @@ func handleScareMeter(scare_amount: float):
 		scaremeter.get_child(0).play('spook_full')
 	else:
 		scaremeter.get_child(0).play('spook')
+
+
+func _on_shadow_timer_timeout():
+	scaremeter.value -= SHADOW_SPOOK_DRAIN_AMOUNT
