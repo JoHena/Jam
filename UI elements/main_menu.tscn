@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3jos1xjimqgy"]
+[gd_scene load_steps=4 format=3 uid="uid://c3jos1xjimqgy"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_a6wgn"]
-[ext_resource type="Texture2D" uid="uid://ccu5dfssekyd" path="res://UI elements/Button1.png" id="2_p5bxn"]
+[ext_resource type="Texture2D" uid="uid://c7mdb1cu2rne5" path="res://UI elements/JPG/06.jpg" id="2_wyfrw"]
+[ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="3_7n5lc"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,37 +15,67 @@ script = ExtResource("1_a6wgn")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 253.0
-offset_top = 110.0
-offset_right = 325.0
-offset_bottom = 238.0
+offset_top = 2.0
+offset_right = 99.0
+offset_bottom = 357.0
+scale = Vector2(6.44, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="09" type="Sprite2D" parent="MarginContainer"]
+visible = false
+modulate = Color(0.494118, 0, 0.0823529, 1)
+position = Vector2(48.913, 189)
+scale = Vector2(0.0621119, 0.399999)
+texture = ExtResource("2_wyfrw")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 183.0
+offset_top = 1.0
+offset_right = 413.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0.356863, 0, 0.929412, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 42
+text = "Main Menu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 183.0
+offset_top = 17.0
+offset_right = 415.0
+offset_bottom = 372.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-icon = ExtResource("2_p5bxn")
-flat = true
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Play"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 7.0
-offset_right = 55.0
-offset_bottom = 31.0
-theme_override_font_sizes/font_size = 17
-text = "Start"
-
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 75)
 layout_mode = 2
-icon = ExtResource("2_p5bxn")
+theme = ExtResource("3_7n5lc")
+text = "Play"
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 75)
 layout_mode = 2
-icon = ExtResource("2_p5bxn")
+theme = ExtResource("3_7n5lc")
+text = "Options"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="Exit" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 75)
+layout_mode = 2
+theme = ExtResource("3_7n5lc")
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
