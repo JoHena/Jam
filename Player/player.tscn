@@ -1,10 +1,12 @@
-[gd_scene load_steps=47 format=3 uid="uid://cfj3wgisw4sow"]
+[gd_scene load_steps=49 format=3 uid="uid://cfj3wgisw4sow"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_y4xk4"]
 [ext_resource type="Texture2D" uid="uid://dfk11a7cvy182" path="res://Player/Sprites/pixil-frame-0(1).png" id="2_7hv0k"]
 [ext_resource type="Script" path="res://state_machine.gd" id="3_vbwnb"]
 [ext_resource type="Script" path="res://Player/states/move_state.gd" id="4_7urrr"]
 [ext_resource type="Shader" path="res://Shaders/shadowsOverlay.gdshader" id="5_h1s0j"]
+[ext_resource type="Script" path="res://Player/SoundQueue.gd" id="6_nap82"]
+[ext_resource type="AudioStream" uid="uid://bimtdv7odm247" path="res://SFX/Player/Dimension_Flip_GhostFolder.wav" id="6_rxtu4"]
 
 [sub_resource type="Animation" id="Animation_6ngh6"]
 length = 0.001
@@ -555,9 +557,10 @@ texture = ExtResource("2_7hv0k")
 visible = false
 shape = SubResource("CircleShape2D_h6evk")
 
-[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "sound_queue")]
 script = ExtResource("3_vbwnb")
 starting_state = NodePath("move")
+sound_queue = NodePath("../SoundQueue")
 
 [node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("SHADOW_TIMER")]
 script = ExtResource("4_7urrr")
@@ -587,7 +590,6 @@ offset_top = -13.75
 offset_right = 57.75
 offset_bottom = 13.25
 scale = Vector2(0.20079, 0.054093)
-value = 50.0
 show_percentage = false
 
 [node name="scare_anim" type="AnimationPlayer" parent="scaremeter"]
@@ -614,6 +616,15 @@ libraries = {
 autoplay = "shadow_enter"
 
 [node name="Shadow_Timer" type="Timer" parent="ShadowContainer"]
+
+[node name="SoundQueue" type="Node" parent="."]
+script = ExtResource("6_nap82")
+
+[node name="dimention_shift" type="AudioStreamPlayer2D" parent="SoundQueue"]
+scale = Vector2(0.8, 0.8)
+stream = ExtResource("6_rxtu4")
+pitch_scale = 1.82
+bus = &"Shadow"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="state_machine/move" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="ShadowContainer/ShadowOverlay/shadow_anim" to="state_machine/move" method="_on_shadow_anim_animation_finished"]

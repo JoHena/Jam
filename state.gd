@@ -11,6 +11,7 @@ var move_speed: float = 300
 
 # Hold a reference to the parent so that it can be controlled by the state
 var parent: Player
+var sound_queue: SoundQueue
 
 func enter() -> void:
 	# If we include animations it would be like this.

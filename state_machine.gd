@@ -1,6 +1,7 @@
 extends Node
 
 @export var starting_state: State
+@export var sound_queue: SoundQueue
 
 var current_state: State
 
@@ -9,6 +10,7 @@ var current_state: State
 func init(parent: Player) -> void:
 	for child in get_children():
 		child.parent = parent
+		child.sound_queue = sound_queue
 
 	# Initialize to the default state
 	change_state(starting_state)

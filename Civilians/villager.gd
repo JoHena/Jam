@@ -47,7 +47,11 @@ func showScarePoints():
 	instance.text = "+" + str(SCARED_AMOUNT)
 	add_child(instance)
 
-# When death animation finishes delete itself
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == 'death':
+func handleScare():
+	showScarePoints()
+	sound_queue.playEffect('scream', 1, 1.83)
+
+# When scream finishes delete itself
+func _on_scream_finished():
+	if TIMES_SCARED >= SCARES_TILL_DEATH:
 		queue_free()

@@ -1,5 +1,6 @@
 extends Control
 
+@export var anim: AnimationPlayer
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://UI elements/main_menu.tscn")
+	anim.play("menu_load")

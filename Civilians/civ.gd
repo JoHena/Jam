@@ -23,6 +23,9 @@ enum civ_state {
 @onready var anim = $AnimationPlayer
 @onready var sprite = $sprite
 
+# Audio player
+@export var sound_queue: SoundQueue
+
 # Timer to switch direction
 @onready var timer = $Timer
 

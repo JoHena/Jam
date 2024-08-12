@@ -1,9 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3jos1xjimqgy"]
+[gd_scene load_steps=19 format=3 uid="uid://c3jos1xjimqgy"]
 
-[ext_resource type="Script" path="res://MainMenu.gd" id="1_a6wgn"]
-[ext_resource type="Texture2D" uid="uid://c7mdb1cu2rne5" path="res://UI elements/JPG/06.jpg" id="2_wyfrw"]
+[ext_resource type="Script" path="res://UI elements/MainMenu.gd" id="1_a6wgn"]
 [ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="3_7n5lc"]
 [ext_resource type="Material" uid="uid://cwvo4askjegkl" path="res://UI elements/wavey_text.tres" id="3_j5vm7"]
+[ext_resource type="PackedScene" uid="uid://bijlvfox0ps7y" path="res://UI elements/options.tscn" id="4_kq5ks"]
+[ext_resource type="Script" path="res://Player/SoundQueue.gd" id="5_l0w66"]
+[ext_resource type="AudioStream" uid="uid://eruwg0twudkc" path="res://SFX/UI/Click_GhostFolder.wav" id="6_d7c3n"]
+[ext_resource type="AudioStream" uid="uid://m2xvohlk08g5" path="res://Music/GhostMenu2.wav" id="7_knbne"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_is83q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ipd7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_injm1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy577"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3osr1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4bk1p"]
 
 [sub_resource type="Animation" id="Animation_pabpf"]
 length = 0.001
@@ -18,6 +33,58 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_453gm"]
+resource_name = "menu_load"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Options_Container:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Options_Container:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Main_Container:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer/Main_Container:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_k7onu"]
@@ -35,14 +102,104 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Options_Container:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Main_Container:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer/Main_Container:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_08dhj"]
+resource_name = "options_load"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Options_Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Main_Container:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Main_Container:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer/Options_Container:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7add"]
 _data = {
 "RESET": SubResource("Animation_pabpf"),
-"onLoad": SubResource("Animation_k7onu")
+"menu_load": SubResource("Animation_453gm"),
+"onLoad": SubResource("Animation_k7onu"),
+"options_load": SubResource("Animation_08dhj")
 }
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("sound_queue")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -51,20 +208,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a6wgn")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_top = 2.0
-offset_right = 99.0
-offset_bottom = 357.0
-scale = Vector2(6.44, 1)
-
-[node name="09" type="Sprite2D" parent="MarginContainer"]
-visible = false
-modulate = Color(0.494118, 0, 0.0823529, 1)
-position = Vector2(48.913, 189)
-scale = Vector2(0.0621119, 0.399999)
-texture = ExtResource("2_wyfrw")
+sound_queue = NodePath("SoundQueue")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -73,7 +217,7 @@ offset_top = 26.0
 offset_right = 269.0
 offset_bottom = 381.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Game_Name" type="Label" parent="VBoxContainer"]
 material = ExtResource("3_j5vm7")
 layout_mode = 2
 theme_override_colors/font_color = Color(0.356863, 0, 0.929412, 1)
@@ -86,32 +230,47 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_font_sizes/font_size = 42
 text = "Ghost Game"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Options_Container" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Options" parent="VBoxContainer/Options_Container" node_paths=PackedStringArray("anim") instance=ExtResource("4_kq5ks")]
+layout_mode = 2
+anim = NodePath("../../../AnimationPlayer")
+
+[node name="Main_Container" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Main" type="VBoxContainer" parent="VBoxContainer/Main_Container"]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer/Main_Container/Main"]
 material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(110, 75)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_is83q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7ipd7")
 text = "Play"
 
-[node name="Options" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="VBoxContainer/Main_Container/Main"]
 material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(120, 75)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_injm1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fy577")
 text = "Options"
 
-[node name="Exit" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="VBoxContainer/Main_Container/Main"]
 material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(120, 75)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3osr1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4bk1p")
 text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -120,6 +279,15 @@ libraries = {
 }
 autoplay = "onLoad"
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="SoundQueue" type="Node" parent="."]
+script = ExtResource("5_l0w66")
+
+[node name="button_click" type="AudioStreamPlayer2D" parent="SoundQueue"]
+stream = ExtResource("6_d7c3n")
+
+[node name="menu_music" type="AudioStreamPlayer2D" parent="SoundQueue"]
+stream = ExtResource("7_knbne")
+
+[connection signal="pressed" from="VBoxContainer/Main_Container/Main/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main_Container/Main/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main_Container/Main/Exit" to="." method="_on_exit_pressed"]

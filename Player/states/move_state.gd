@@ -28,11 +28,10 @@ func process_physics(_delta: float) -> State:
 	animation_tree['parameters/Move/blend_position'] = direction
 
 	return null
-
-func process_input(_event: InputEvent) -> State:
+	
+func _process(_delta):
 	scream()
 	shadow_step()
-	return null	
 
 # We do this here instead of another state to still move while screaming
 func scream():
@@ -45,13 +44,16 @@ func scream():
 func shadow_step():
 	if IS_SHADOW:
 		if Input.is_action_just_pressed('shadow_step'):
+			sound_queue.playEffect('dimention_shift', 1.32, 1.72)
 			switch_colission_layers()
 			
-		if scaremeter.value == 0:
+		if scaremeter.value <= 0:
+			sound_queue.playEffect('dimention_shift', 1.32, 1.72)
 			switch_colission_layers()
 			
 	elif Input.is_action_just_pressed('shadow_step'):
 		if (scaremeter.value - SHADOW_SPOOK_DRAIN_AMOUNT) >= 0:
+			sound_queue.playEffect('dimention_shift', 1.32, 1.72)
 			switch_colission_layers()
 
 func switch_colission_layers():
@@ -77,7 +79,7 @@ func scareCivs(bodys: Array):
 	for body in bodys:
 		if body.is_in_group('Civilians'):
 			if body.TIMES_SCARED < body.SCARES_TILL_DEATH:
-				body.showScarePoints()
+				body.handleScare()
 				handleScareMeter(body.SCARED_AMOUNT)
 			body.is_scared = true
 			body.TIMES_SCARED += 1
