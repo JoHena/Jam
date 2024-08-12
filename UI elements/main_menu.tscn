@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3jos1xjimqgy"]
+[gd_scene load_steps=33 format=3 uid="uid://c3jos1xjimqgy"]
 
 [ext_resource type="Script" path="res://UI elements/MainMenu.gd" id="1_a6wgn"]
 [ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="3_7n5lc"]
@@ -7,6 +7,16 @@
 [ext_resource type="Script" path="res://Player/SoundQueue.gd" id="5_l0w66"]
 [ext_resource type="AudioStream" uid="uid://eruwg0twudkc" path="res://SFX/UI/Click_GhostFolder.wav" id="6_d7c3n"]
 [ext_resource type="AudioStream" uid="uid://m2xvohlk08g5" path="res://Music/GhostMenu2.wav" id="7_knbne"]
+[ext_resource type="Texture2D" uid="uid://d2t2okoyrlgkr" path="res://UI elements/keys/keyboard_a.png" id="8_0brfp"]
+[ext_resource type="Texture2D" uid="uid://cp02re3cpehrp" path="res://UI elements/keys/keyboard_w.png" id="9_xuoei"]
+[ext_resource type="Texture2D" uid="uid://lxxckvu0ag6j" path="res://UI elements/keys/keyboard_s.png" id="10_r2r3c"]
+[ext_resource type="Texture2D" uid="uid://da5m8mcpoj518" path="res://UI elements/keys/keyboard_d.png" id="11_1u3pr"]
+[ext_resource type="Texture2D" uid="uid://cw07gl00g06qf" path="res://UI elements/keys/keyboard_shift_outline.png" id="13_kc8ah"]
+[ext_resource type="Texture2D" uid="uid://c7qbhkeqqw800" path="res://UI elements/keys/keyboard_1_outline.png" id="14_dqxnm"]
+[ext_resource type="Texture2D" uid="uid://t1p33m2xoh3p" path="res://UI elements/keys/keyboard_2_outline.png" id="15_cdla0"]
+[ext_resource type="Texture2D" uid="uid://dr2dph1ylxfot" path="res://UI elements/keys/keyboard_3_outline.png" id="16_nimiv"]
+[ext_resource type="Texture2D" uid="uid://dx7vr57y3dlo3" path="res://UI elements/keys/keyboard_space_outline.png" id="16_pt7eb"]
+[ext_resource type="Texture2D" uid="uid://bx7io4c7qu3u1" path="res://UI elements/keys/keyboard_4_outline.png" id="17_m8fyt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_is83q"]
 
@@ -33,6 +43,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Keys:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Keys:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_453gm"]
@@ -86,6 +120,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Keys:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Keys:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_k7onu"]
 resource_name = "onLoad"
@@ -97,7 +155,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0.5, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -121,7 +179,7 @@ tracks/2/path = NodePath("VBoxContainer/Main_Container:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -133,7 +191,7 @@ tracks/3/path = NodePath("VBoxContainer/Main_Container:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
@@ -190,6 +248,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Keys:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Keys:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7add"]
 _data = {
@@ -199,12 +281,71 @@ _data = {
 "options_load": SubResource("Animation_08dhj")
 }
 
+[sub_resource type="Animation" id="Animation_gjvfy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.214557, 1, 0.951185, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rqsha"]
+resource_name = "spook"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.214557, 1, 0.951185, 1), Color(0.572549, 0.482353, 1, 1), Color(0.371646, 0.933333, 0.960948, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ve6j6"]
+resource_name = "spook_full"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.214557, 1, 0.951185, 1), Color(0.572549, 0.482353, 1, 1), Color(0.371646, 0.933333, 0.960948, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j8pcf"]
+_data = {
+"RESET": SubResource("Animation_gjvfy"),
+"spook": SubResource("Animation_rqsha"),
+"spook_full": SubResource("Animation_ve6j6")
+}
+
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("sound_queue")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a6wgn")
@@ -212,10 +353,10 @@ sound_queue = NodePath("SoundQueue")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 37.0
-offset_top = 26.0
-offset_right = 269.0
-offset_bottom = 381.0
+offset_left = 28.0
+offset_top = 31.0
+offset_right = 279.0
+offset_bottom = 386.0
 
 [node name="Game_Name" type="Label" parent="VBoxContainer"]
 material = ExtResource("3_j5vm7")
@@ -231,7 +372,6 @@ theme_override_font_sizes/font_size = 42
 text = "Ghost Game"
 
 [node name="Options_Container" type="VBoxContainer" parent="VBoxContainer"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
@@ -241,6 +381,8 @@ anim = NodePath("../../../AnimationPlayer")
 sound_queue = NodePath("../../../SoundQueue")
 
 [node name="Main_Container" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 alignment = 1
 
@@ -288,6 +430,154 @@ stream = ExtResource("6_d7c3n")
 
 [node name="menu_music" type="AudioStreamPlayer2D" parent="SoundQueue"]
 stream = ExtResource("7_knbne")
+
+[node name="Keys" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 83.0
+offset_top = 47.0
+offset_right = 123.0
+offset_bottom = 87.0
+
+[node name="Move Keys" type="Control" parent="Keys"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="KeyboardA" type="Sprite2D" parent="Keys/Move Keys"]
+material = ExtResource("3_j5vm7")
+position = Vector2(293, 232)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_0brfp")
+
+[node name="KeyboardW" type="Sprite2D" parent="Keys/Move Keys"]
+material = ExtResource("3_j5vm7")
+position = Vector2(322, 201)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_xuoei")
+
+[node name="KeyboardS" type="Sprite2D" parent="Keys/Move Keys"]
+material = ExtResource("3_j5vm7")
+position = Vector2(322, 232)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_r2r3c")
+
+[node name="KeyboardD" type="Sprite2D" parent="Keys/Move Keys"]
+material = ExtResource("3_j5vm7")
+position = Vector2(355, 232)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_1u3pr")
+
+[node name="Move" type="Label" parent="Keys/Move Keys"]
+material = ExtResource("3_j5vm7")
+layout_mode = 0
+offset_left = 300.0
+offset_top = 256.0
+offset_right = 343.0
+offset_bottom = 279.0
+text = "Move
+"
+
+[node name="Summon Keys" type="Control" parent="Keys"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Keyboard1Outline" type="Sprite2D" parent="Keys/Summon Keys"]
+material = ExtResource("3_j5vm7")
+position = Vector2(408, 83)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_dqxnm")
+
+[node name="Keyboard2Outline" type="Sprite2D" parent="Keys/Summon Keys"]
+material = ExtResource("3_j5vm7")
+position = Vector2(444, 83)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_cdla0")
+
+[node name="Keyboard3Outline" type="Sprite2D" parent="Keys/Summon Keys"]
+material = ExtResource("3_j5vm7")
+position = Vector2(480, 83)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_nimiv")
+
+[node name="Keyboard4Outline" type="Sprite2D" parent="Keys/Summon Keys"]
+material = ExtResource("3_j5vm7")
+position = Vector2(516, 84)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_m8fyt")
+
+[node name="Summons" type="Label" parent="Keys/Summon Keys"]
+material = ExtResource("3_j5vm7")
+layout_mode = 0
+offset_left = 422.0
+offset_top = 109.0
+offset_right = 500.0
+offset_bottom = 132.0
+text = "Summons"
+
+[node name="Power Keys" type="Control" parent="Keys"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Shift" type="Label" parent="Keys/Power Keys"]
+material = ExtResource("3_j5vm7")
+layout_mode = 0
+offset_left = 463.0
+offset_top = 164.0
+offset_right = 585.0
+offset_bottom = 187.0
+text = "Shadow"
+
+[node name="Scare" type="Label" parent="Keys/Power Keys"]
+material = ExtResource("3_j5vm7")
+layout_mode = 0
+offset_left = 465.0
+offset_top = 219.0
+offset_right = 587.0
+offset_bottom = 242.0
+text = "Scare
+"
+
+[node name="KeyboardSpace" type="Sprite2D" parent="Keys/Power Keys"]
+material = ExtResource("3_j5vm7")
+position = Vector2(425, 230)
+texture = ExtResource("16_pt7eb")
+
+[node name="KeyboardShiftOutline" type="Sprite2D" parent="Keys/Power Keys"]
+material = ExtResource("3_j5vm7")
+position = Vector2(426, 177)
+texture = ExtResource("13_kc8ah")
+
+[node name="scaremeter" type="ProgressBar" parent="Keys"]
+modulate = Color(0.214557, 1, 0.951185, 1)
+z_index = 11
+material = ExtResource("3_j5vm7")
+layout_mode = 0
+offset_left = 405.0
+offset_top = 32.0
+offset_right = 469.0
+offset_bottom = 59.0
+scale = Vector2(1.88448, 0.28752)
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="scare_anim" type="AnimationPlayer" parent="Keys/scaremeter"]
+libraries = {
+"": SubResource("AnimationLibrary_j8pcf")
+}
+autoplay = "spook"
+
+[node name="Spook" type="Label" parent="Keys/scaremeter"]
+material = ExtResource("3_j5vm7")
+layout_mode = 0
+offset_left = 6.89841
+offset_top = -55.6484
+offset_right = 128.898
+offset_bottom = -32.6484
+scale = Vector2(0.485477, 1.56504)
+text = "Spook Meter"
 
 [connection signal="pressed" from="VBoxContainer/Main_Container/Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Main_Container/Main/Options" to="." method="_on_options_pressed"]

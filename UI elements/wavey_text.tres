@@ -3,6 +3,7 @@
 [ext_resource type="Shader" path="res://Shaders/wobbly_text.gdshader" id="1_fig5t"]
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_fig5t")
 shader_parameter/height = 3.0
 shader_parameter/frequency = 20.0
