@@ -4,6 +4,9 @@ extends CharacterBody2D
 @onready var sprite = $sprite
 @onready var state_machine = $state_machine
 
+# Animators
+@onready var shadow_anim = $ShadowContainer/ShadowOverlay/shadow_anim
+
 var CAN_MOVE: bool = false
 
 func _ready() -> void:
@@ -22,7 +25,3 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	if CAN_MOVE:
 		state_machine.process_frame(delta)
-
-
-func _on_start_timer_timeout():
-	CAN_MOVE = true

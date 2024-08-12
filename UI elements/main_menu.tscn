@@ -1,10 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3jos1xjimqgy"]
+[gd_scene load_steps=8 format=3 uid="uid://c3jos1xjimqgy"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_a6wgn"]
 [ext_resource type="Texture2D" uid="uid://c7mdb1cu2rne5" path="res://UI elements/JPG/06.jpg" id="2_wyfrw"]
 [ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="3_7n5lc"]
+[ext_resource type="Material" uid="uid://cwvo4askjegkl" path="res://UI elements/wavey_text.tres" id="3_j5vm7"]
+
+[sub_resource type="Animation" id="Animation_k7onu"]
+resource_name = "onLoad"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pabpf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7add"]
+_data = {
+"RESET": SubResource("Animation_pabpf"),
+"onLoad": SubResource("Animation_k7onu")
+}
 
 [node name="MainMenu" type="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,12 +66,16 @@ position = Vector2(48.913, 189)
 scale = Vector2(0.0621119, 0.399999)
 texture = ExtResource("2_wyfrw")
 
-[node name="Label" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 183.0
-offset_top = 1.0
-offset_right = 413.0
-offset_bottom = 59.0
+offset_left = 37.0
+offset_top = 26.0
+offset_right = 269.0
+offset_bottom = 381.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+material = ExtResource("3_j5vm7")
+layout_mode = 2
 theme_override_colors/font_color = Color(0.356863, 0, 0.929412, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -41,15 +84,7 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 8
 theme_override_constants/shadow_outline_size = 2
 theme_override_font_sizes/font_size = 42
-text = "Main Menu"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_left = 183.0
-offset_top = 17.0
-offset_right = 415.0
-offset_bottom = 372.0
-alignment = 1
+text = "Ghost Game"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -59,22 +94,31 @@ alignment = 1
 layout_mode = 2
 
 [node name="Play" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(110, 75)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
 text = "Play"
 
 [node name="Options" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(120, 75)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
 text = "Options"
 
 [node name="Exit" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(120, 75)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
 text = "Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k7add")
+}
+autoplay = "onLoad"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

@@ -14,9 +14,6 @@ var IS_SHADOW: bool = false
 @onready var scaremeter = $"../../scaremeter"
 @onready var shadow_anim = $"../../ShadowContainer/ShadowOverlay/shadow_anim"
 
-func enter():
-	shadow_anim.play('shadow_start')
-	
 func process_physics(_delta: float) -> State:
 	var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
 
