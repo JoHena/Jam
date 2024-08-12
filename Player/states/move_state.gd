@@ -36,6 +36,7 @@ func _process(_delta):
 # We do this here instead of another state to still move while screaming
 func scream():
 	if Input.is_action_just_pressed('attack'):
+		sound_queue.playEffect('scare', 1.32, 2.37)
 		animation_tree['parameters/conditions/is_screaming'] = true
 		scareCivs(screamArea.get_overlapping_bodies())
 	else: 

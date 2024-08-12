@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cfj3wgisw4sow"]
+[gd_scene load_steps=50 format=3 uid="uid://cfj3wgisw4sow"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_y4xk4"]
 [ext_resource type="Texture2D" uid="uid://dfk11a7cvy182" path="res://Player/Sprites/pixil-frame-0(1).png" id="2_7hv0k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://Shaders/shadowsOverlay.gdshader" id="5_h1s0j"]
 [ext_resource type="Script" path="res://Player/SoundQueue.gd" id="6_nap82"]
 [ext_resource type="AudioStream" uid="uid://bimtdv7odm247" path="res://SFX/Player/Dimension_Flip_GhostFolder.wav" id="6_rxtu4"]
+[ext_resource type="AudioStream" uid="uid://yl3pegg66mfv" path="res://SFX/Player/Dash_GhostFolder.wav" id="8_4l4jf"]
 
 [sub_resource type="Animation" id="Animation_6ngh6"]
 length = 0.001
@@ -624,6 +625,12 @@ script = ExtResource("6_nap82")
 scale = Vector2(0.8, 0.8)
 stream = ExtResource("6_rxtu4")
 pitch_scale = 1.82
+bus = &"Shadow"
+
+[node name="scare" type="AudioStreamPlayer2D" parent="SoundQueue"]
+scale = Vector2(0.8, 0.8)
+stream = ExtResource("8_4l4jf")
+pitch_scale = 2.37
 bus = &"Shadow"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="state_machine/move" method="_on_animation_player_animation_finished"]
