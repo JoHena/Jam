@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://1jm23fph1ckn"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://1jm23fph1ckn"]
 
 [ext_resource type="Texture2D" uid="uid://ccu5dfssekyd" path="res://UI elements/Button1.png" id="1_73pwe"]
 
@@ -9,9 +9,14 @@ modulate_color = Color(0.447059, 0, 1, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n51x7"]
 texture = ExtResource("1_73pwe")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r7qod"]
+texture = ExtResource("1_73pwe")
+modulate_color = Color(0.376471, 0.0235294, 1, 1)
+
 [resource]
 Button/constants/h_separation = 50
 Button/constants/icon_max_width = 0
 Button/font_sizes/font_size = 23
 Button/styles/hover = SubResource("StyleBoxTexture_pg6xb")
 Button/styles/normal = SubResource("StyleBoxTexture_n51x7")
+Button/styles/pressed = SubResource("StyleBoxTexture_r7qod")

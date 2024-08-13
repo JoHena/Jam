@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cefo4b1yx563v"]
+[gd_scene load_steps=41 format=3 uid="uid://cefo4b1yx563v"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_dukg6"]
 [ext_resource type="Shader" path="res://Shaders/main.gdshader" id="2_2fbxr"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="10_tg1wc"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_m123m"]
 [ext_resource type="PackedScene" uid="uid://c3jos1xjimqgy" path="res://UI elements/main_menu.tscn" id="13_ya3oi"]
+[ext_resource type="PackedScene" uid="uid://b4b6rst7ssknh" path="res://UI elements/pause_menu.tscn" id="14_hf83k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1xig"]
 shader = ExtResource("9_kol1l")
@@ -696,6 +697,7 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
+process_mode = 3
 material = SubResource("ShaderMaterial_d1xig")
 script = ExtResource("1_dukg6")
 
@@ -876,5 +878,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("14_hf83k")]
+process_mode = 3
+visible = false
+offset_left = 138.0
+offset_top = 86.0
+offset_right = 138.0
+offset_bottom = 86.0
 
 [connection signal="timeout" from="PhantomCamera2D/Start_Timer" to="." method="_on_start_timer_timeout"]
