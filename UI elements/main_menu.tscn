@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c3jos1xjimqgy"]
+[gd_scene load_steps=35 format=3 uid="uid://c3jos1xjimqgy"]
 
 [ext_resource type="Script" path="res://UI elements/MainMenu.gd" id="1_a6wgn"]
 [ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="3_7n5lc"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dr2dph1ylxfot" path="res://UI elements/keys/keyboard_3_outline.png" id="16_nimiv"]
 [ext_resource type="Texture2D" uid="uid://dx7vr57y3dlo3" path="res://UI elements/keys/keyboard_space_outline.png" id="16_pt7eb"]
 [ext_resource type="Texture2D" uid="uid://bx7io4c7qu3u1" path="res://UI elements/keys/keyboard_4_outline.png" id="17_m8fyt"]
+[ext_resource type="PackedScene" uid="uid://w8ksfpy0bik2" path="res://UI elements/credits.tscn" id="18_ad7fc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_is83q"]
 
@@ -63,6 +64,66 @@ tracks/2/path = NodePath("Keys:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer/Main_Container:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VBoxContainer/Main_Container:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Credits:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Credits:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VBoxContainer/Game_Name:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -273,9 +334,97 @@ tracks/5/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_pkjjn"]
+resource_name = "credits_load"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Main_Container:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Main_Container:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Credits:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Credits:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VBoxContainer/Game_Name:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Keys:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Keys:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7add"]
 _data = {
 "RESET": SubResource("Animation_pabpf"),
+"credits_load": SubResource("Animation_pkjjn"),
 "menu_load": SubResource("Animation_453gm"),
 "onLoad": SubResource("Animation_k7onu"),
 "options_load": SubResource("Animation_08dhj")
@@ -353,10 +502,10 @@ sound_queue = NodePath("SoundQueue")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 28.0
-offset_top = 31.0
-offset_right = 279.0
-offset_bottom = 386.0
+offset_left = 25.0
+offset_top = 2.0
+offset_right = 276.0
+offset_bottom = 380.0
 
 [node name="Game_Name" type="Label" parent="VBoxContainer"]
 material = ExtResource("3_j5vm7")
@@ -372,6 +521,7 @@ theme_override_font_sizes/font_size = 42
 text = "Ghost Game"
 
 [node name="Options_Container" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
@@ -381,8 +531,6 @@ anim = NodePath("../../../AnimationPlayer")
 sound_queue = NodePath("../../../SoundQueue")
 
 [node name="Main_Container" type="HBoxContainer" parent="VBoxContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 alignment = 1
 
@@ -391,7 +539,7 @@ layout_mode = 2
 
 [node name="Play" type="Button" parent="VBoxContainer/Main_Container/Main"]
 material = ExtResource("3_j5vm7")
-custom_minimum_size = Vector2(110, 75)
+custom_minimum_size = Vector2(110, 70)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_is83q")
@@ -400,16 +548,23 @@ text = "Play"
 
 [node name="Options" type="Button" parent="VBoxContainer/Main_Container/Main"]
 material = ExtResource("3_j5vm7")
-custom_minimum_size = Vector2(120, 75)
+custom_minimum_size = Vector2(120, 70)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_injm1")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fy577")
 text = "Options"
 
+[node name="Credits" type="Button" parent="VBoxContainer/Main_Container/Main"]
+material = ExtResource("3_j5vm7")
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+theme = ExtResource("3_7n5lc")
+text = "Credits"
+
 [node name="Exit" type="Button" parent="VBoxContainer/Main_Container/Main"]
 material = ExtResource("3_j5vm7")
-custom_minimum_size = Vector2(120, 75)
+custom_minimum_size = Vector2(120, 70)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3osr1")
@@ -579,6 +734,12 @@ offset_bottom = -32.6484
 scale = Vector2(0.485477, 1.56504)
 text = "Spook Meter"
 
+[node name="Credits" parent="." instance=ExtResource("18_ad7fc")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/Main_Container/Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Main_Container/Main/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main_Container/Main/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Main_Container/Main/Exit" to="." method="_on_exit_pressed"]

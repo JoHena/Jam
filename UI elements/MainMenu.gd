@@ -33,3 +33,8 @@ func fade_out(stream_player):
 	var tween = create_tween()
 	tween.tween_property(stream_player, "volume_db", -80, transition_duration)
 	tween.tween_callback(stream_player.stop)
+
+
+func _on_credits_pressed():
+	sound_queue.playMusic('button_click')
+	anim.play("credits_load")

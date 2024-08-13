@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://w8ksfpy0bik2"]
+
+[ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="1_2p83b"]
+[ext_resource type="Material" uid="uid://cwvo4askjegkl" path="res://UI elements/wavey_text.tres" id="2_gdfoa"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -13.0
+offset_right = -1.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = 62.0
+offset_right = 293.0
+offset_bottom = 361.0
+theme = ExtResource("1_2p83b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource("2_gdfoa")
+custom_minimum_size = Vector2(75, 120)
+layout_mode = 2
+text = "Yom"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource("2_gdfoa")
+custom_minimum_size = Vector2(75, 120)
+layout_mode = 2
+text = "BBB_Bomb"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 73.0
+offset_right = 640.0
+offset_bottom = 145.0
+theme = ExtResource("1_2p83b")
+theme_override_constants/margin_top = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer2/VBoxContainer"]
+material = ExtResource("2_gdfoa")
+custom_minimum_size = Vector2(75, 120)
+layout_mode = 2
+text = "ThreeDuck"
+
+[node name="Button2" type="Button" parent="MarginContainer2/VBoxContainer"]
+material = ExtResource("2_gdfoa")
+custom_minimum_size = Vector2(75, 120)
+layout_mode = 2
+text = "Fosty"
+
+[node name="Label" type="Label" parent="."]
+material = ExtResource("2_gdfoa")
+layout_mode = 2
+offset_left = 124.0
+offset_top = 2.0
+offset_right = 485.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.635294, 0, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "This game was made by :"
