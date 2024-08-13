@@ -41,7 +41,7 @@ func pause():
 		return # do nothing if escape isn't pressed
 	elif pause_menu.visible: # we are paused
 		pause_menu.visible = false
-		get_tree().paused = false 
+		get_tree().paused = false
 	else: # we are unpaused
 		pause_menu.visible = true
 		get_tree().paused = true
