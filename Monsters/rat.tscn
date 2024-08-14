@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgcn5cdkx1iv5"]
+
+[ext_resource type="Texture2D" uid="uid://dikobq33tc1r0" path="res://TileSheet/TransparentSheet.png" id="1_2at0i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gvqw7"]
+radius = 3.16228
+
+[node name="Rat" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2at0i")
+region_enabled = true
+region_rect = Rect2(54, 10, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gvqw7")

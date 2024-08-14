@@ -1,16 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfkskxrei0k6b"]
+[gd_scene load_steps=2 format=3 uid="uid://cfkskxrei0k6b"]
 
 [ext_resource type="Texture2D" uid="uid://dikobq33tc1r0" path="res://TileSheet/TransparentSheet.png" id="1_8ij66"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vaqa1"]
-radius = 4.0
 
 [node name="EyeMonster" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8ij66")
 region_enabled = true
-region_rect = Rect2(117, 0, 8, 8)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_vaqa1")
+region_rect = Rect2(117, 1, 8, 8)

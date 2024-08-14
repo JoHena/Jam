@@ -11,7 +11,7 @@ height = 8.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_k7cnh")
 region_enabled = true
-region_rect = Rect2(54, 0, 8, 8)
+region_rect = Rect2(54, 1, 8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5e7gy")

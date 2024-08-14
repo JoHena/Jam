@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcthx7qgwgv6b"]
+
+[ext_resource type="Texture2D" uid="uid://dikobq33tc1r0" path="res://TileSheet/TransparentSheet.png" id="1_3qwpb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlq6n"]
+radius = 3.0
+height = 8.0
+
+[node name="Skeleton" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3qwpb")
+region_enabled = true
+region_rect = Rect2(90, 1, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rlq6n")
