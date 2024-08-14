@@ -11,7 +11,7 @@ var IS_SHADOW: bool = false
 
 # onready
 @onready var screamArea = $"../../Area2D"
-@onready var scaremeter = $"../../scaremeter"
+@onready var scaremeter = $"../../SpookMeter"
 @onready var shadow_anim = $"../../ShadowContainer/ShadowOverlay/shadow_anim"
 
 func process_physics(_delta: float) -> State:
@@ -29,7 +29,7 @@ func process_physics(_delta: float) -> State:
 
 	return null
 	
-func _process(_delta):
+func process_input(_delta):
 	scream()
 	shadow_step()
 

@@ -1,13 +1,16 @@
-[gd_scene load_steps=50 format=3 uid="uid://cfj3wgisw4sow"]
+[gd_scene load_steps=54 format=3 uid="uid://cfj3wgisw4sow"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_y4xk4"]
 [ext_resource type="Texture2D" uid="uid://dfk11a7cvy182" path="res://Player/Sprites/pixil-frame-0(1).png" id="2_7hv0k"]
 [ext_resource type="Script" path="res://state_machine.gd" id="3_vbwnb"]
 [ext_resource type="Script" path="res://Player/states/move_state.gd" id="4_7urrr"]
 [ext_resource type="Shader" path="res://Shaders/shadowsOverlay.gdshader" id="5_h1s0j"]
+[ext_resource type="Script" path="res://Player/scaremeter.gd" id="5_ro7b8"]
+[ext_resource type="Material" uid="uid://cwvo4askjegkl" path="res://UI elements/wavey_text.tres" id="5_x3kvy"]
 [ext_resource type="Script" path="res://Player/SoundQueue.gd" id="6_nap82"]
 [ext_resource type="AudioStream" uid="uid://bimtdv7odm247" path="res://SFX/Player/Dimension_Flip_GhostFolder.wav" id="6_rxtu4"]
 [ext_resource type="AudioStream" uid="uid://yl3pegg66mfv" path="res://SFX/Player/Dash_GhostFolder.wav" id="8_4l4jf"]
+[ext_resource type="AudioStream" uid="uid://0t3g7cn7htdi" path="res://SFX/Player/Game_Lost_GhostFolder.wav" id="10_xktfy"]
 
 [sub_resource type="Animation" id="Animation_6ngh6"]
 length = 0.001
@@ -34,6 +37,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-0.174533]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_07lpv"]
@@ -108,10 +147,50 @@ tracks/1/keys = {
 "values": [-0.174533, 0.174533]
 }
 
+[sub_resource type="Animation" id="Animation_4fasw"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.314211, 0.0226934, 0.600175, 1), Color(0, 0.643137, 0.533333, 1), Color(0.662407, 0, 0.106793, 1), Color(0.314211, 0.0226934, 0.600175, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5jbfy"]
 _data = {
 "RESET": SubResource("Animation_6ngh6"),
 "Scare": SubResource("Animation_07lpv"),
+"death": SubResource("Animation_4fasw"),
 "ghostly_wave": SubResource("Animation_6c61w"),
 "idle": SubResource("Animation_lmc1s")
 }
@@ -567,6 +646,7 @@ sound_queue = NodePath("../SoundQueue")
 
 [node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("SHADOW_TIMER")]
 script = ExtResource("4_7urrr")
+SHADOW_SPOOK_DRAIN_AMOUNT = 10.0
 SHADOW_TIMER = NodePath("../../ShadowContainer/Shadow_Timer")
 
 [node name="Ghost_Light" type="PointLight2D" parent="."]
@@ -585,17 +665,20 @@ collision_mask = 5
 visible = false
 shape = SubResource("CircleShape2D_i7fwc")
 
-[node name="scaremeter" type="ProgressBar" parent="."]
+[node name="SpookMeter" type="ProgressBar" parent="."]
 modulate = Color(0.214557, 1, 0.951185, 1)
 z_index = 11
+material = ExtResource("5_x3kvy")
 offset_left = -6.25
 offset_top = -13.75
 offset_right = 57.75
 offset_bottom = 13.25
 scale = Vector2(0.20079, 0.054093)
+value = 100.0
 show_percentage = false
+script = ExtResource("5_ro7b8")
 
-[node name="scare_anim" type="AnimationPlayer" parent="scaremeter"]
+[node name="scare_anim" type="AnimationPlayer" parent="SpookMeter"]
 libraries = {
 "": SubResource("AnimationLibrary_j8pcf")
 }
@@ -629,12 +712,21 @@ stream = ExtResource("6_rxtu4")
 pitch_scale = 1.82
 bus = &"Shadow"
 
+[node name="die" type="AudioStreamPlayer2D" parent="SoundQueue"]
+scale = Vector2(0.8, 0.8)
+stream = ExtResource("10_xktfy")
+bus = &"Shadow"
+
 [node name="scare" type="AudioStreamPlayer2D" parent="SoundQueue"]
 scale = Vector2(0.8, 0.8)
 stream = ExtResource("8_4l4jf")
 pitch_scale = 2.37
 bus = &"Shadow"
 
+[node name="SpookDrain" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="state_machine/move" method="_on_animation_player_animation_finished"]
+[connection signal="value_changed" from="SpookMeter" to="." method="_on_spook_meter_value_changed"]
 [connection signal="animation_finished" from="ShadowContainer/ShadowOverlay/shadow_anim" to="state_machine/move" method="_on_shadow_anim_animation_finished"]
 [connection signal="timeout" from="ShadowContainer/Shadow_Timer" to="state_machine/move" method="_on_shadow_timer_timeout"]
+[connection signal="timeout" from="SpookDrain" to="SpookMeter" method="_on_spook_drain_timeout"]

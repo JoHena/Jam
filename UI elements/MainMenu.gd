@@ -14,13 +14,15 @@ var game_has_started = false
 func _ready():
 	sound_queue.playMusic('menu_music')
 
-func paused(is_paused: bool):
+func paused(is_paused: bool, spook_timer):
 	get_tree().paused = is_paused
 	
 	if is_paused:
+		spook_timer.paused = true
 		sound_queue.playMusic('button_click')
 		anim.play("onLoad", -1, 2.5)
 	else:
+		spook_timer.paused = false
 		sound_queue.playMusic('button_click')
 		hide()
 
@@ -31,7 +33,8 @@ func _on_play_pressed():
 		get_tree().paused = false
 		hide()
 		return
-		
+	
+	Global.score = 0
 	game_has_started = true
 	sound_queue.playMusic('button_click')
 	game_started.emit()

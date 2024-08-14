@@ -33,12 +33,13 @@ func start_game():
 	player.shadow_anim.play("shadow_exit")
 
 func _on_start_timer_timeout():
+	player.spook_drain_timer.start()
 	game_started = true
 	player.CAN_MOVE = true
 	
 func checkPause():
 	if Input.is_action_just_pressed("pause"):
 		paused = !paused
-		main_menu.paused(paused)
+		main_menu.paused(paused, player.spook_drain_timer)
 			
 		

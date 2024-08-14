@@ -825,9 +825,9 @@ z_index = 11
 material = ExtResource("3_j5vm7")
 layout_mode = 0
 offset_left = 405.0
-offset_top = 32.0
+offset_top = 43.0
 offset_right = 469.0
-offset_bottom = 59.0
+offset_bottom = 70.0
 scale = Vector2(1.88448, 0.28752)
 value = 100.0
 rounded = true
@@ -842,12 +842,22 @@ autoplay = "spook"
 [node name="Spook" type="Label" parent="Keys/scaremeter"]
 material = ExtResource("3_j5vm7")
 layout_mode = 0
-offset_left = 6.89841
-offset_top = -55.6484
-offset_right = 128.898
-offset_bottom = -32.6484
+offset_left = 7.42911
+offset_top = -114.775
+offset_right = 129.429
+offset_bottom = -91.7746
 scale = Vector2(0.485477, 1.56504)
 text = "Spook Meter"
+
+[node name="Warning" type="Label" parent="Keys/scaremeter"]
+material = ExtResource("3_j5vm7")
+layout_mode = 0
+offset_left = 2.12261
+offset_top = -59.1263
+offset_right = 128.123
+offset_bottom = -36.1263
+scale = Vector2(0.485477, 1.56504)
+text = "Don't let it drain!"
 
 [node name="Credits" parent="." node_paths=PackedStringArray("anim", "sound_queue") instance=ExtResource("18_ad7fc")]
 visible = false
