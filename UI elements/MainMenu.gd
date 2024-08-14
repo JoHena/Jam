@@ -18,8 +18,10 @@ func paused(is_paused: bool):
 	get_tree().paused = is_paused
 	
 	if is_paused:
+		sound_queue.playMusic('button_click')
 		anim.play("onLoad", -1, 2.5)
 	else:
+		sound_queue.playMusic('button_click')
 		hide()
 
 func _on_play_pressed():
