@@ -674,10 +674,11 @@ sound_queue = NodePath("SoundQueue")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 25.0
-offset_top = 2.0
-offset_right = 276.0
-offset_bottom = 380.0
+offset_left = 30.0
+offset_top = 16.0
+offset_right = 281.0
+offset_bottom = 394.0
+scale = Vector2(0.9, 0.9)
 
 [node name="Game_Name" type="Label" parent="VBoxContainer"]
 material = ExtResource("3_j5vm7")
@@ -762,14 +763,15 @@ stream = ExtResource("7_knbne")
 
 [node name="Keys" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 83.0
+offset_left = 100.0
 offset_top = 47.0
-offset_right = 123.0
+offset_right = 140.0
 offset_bottom = 87.0
 
 [node name="Move Keys" type="Control" parent="Keys"]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 145.0
+offset_right = 185.0
 offset_bottom = 40.0
 
 [node name="KeyboardA" type="Sprite2D" parent="Keys/Move Keys"]
@@ -808,24 +810,26 @@ text = "Move
 
 [node name="Summon Keys" type="Control" parent="Keys"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -117.0
+offset_top = 144.0
+offset_right = -77.0
+offset_bottom = 184.0
 
 [node name="Keyboard1Outline" type="Sprite2D" parent="Keys/Summon Keys"]
 material = ExtResource("3_j5vm7")
-position = Vector2(427, 83)
+position = Vector2(427, 88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_dqxnm")
 
 [node name="Keyboard2Outline" type="Sprite2D" parent="Keys/Summon Keys"]
 material = ExtResource("3_j5vm7")
-position = Vector2(463, 83)
+position = Vector2(463, 88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_cdla0")
 
 [node name="Keyboard3Outline" type="Sprite2D" parent="Keys/Summon Keys"]
 material = ExtResource("3_j5vm7")
-position = Vector2(499, 83)
+position = Vector2(499, 88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_nimiv")
 
@@ -840,8 +844,10 @@ text = "Summons"
 
 [node name="Power Keys" type="Control" parent="Keys"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 10.0
+offset_top = -84.0
+offset_right = 50.0
+offset_bottom = -44.0
 
 [node name="Shift" type="Label" parent="Keys/Power Keys"]
 material = ExtResource("3_j5vm7")
@@ -850,7 +856,7 @@ offset_left = 463.0
 offset_top = 164.0
 offset_right = 585.0
 offset_bottom = 187.0
-text = "Shadow"
+text = "Shift"
 
 [node name="Scare" type="Label" parent="Keys/Power Keys"]
 material = ExtResource("3_j5vm7")
@@ -865,11 +871,13 @@ text = "Scare
 [node name="KeyboardSpace" type="Sprite2D" parent="Keys/Power Keys"]
 material = ExtResource("3_j5vm7")
 position = Vector2(425, 230)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("16_pt7eb")
 
 [node name="KeyboardShiftOutline" type="Sprite2D" parent="Keys/Power Keys"]
 material = ExtResource("3_j5vm7")
 position = Vector2(426, 177)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("13_kc8ah")
 
 [node name="scaremeter" type="ProgressBar" parent="Keys"]
