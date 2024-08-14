@@ -445,6 +445,8 @@ _data = {
 }
 
 [node name="Civ" type="CharacterBody2D" node_paths=PackedStringArray("sound_queue") groups=["Civilians"]]
+z_index = 1
+y_sort_enabled = true
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(0.8, 0.8)
