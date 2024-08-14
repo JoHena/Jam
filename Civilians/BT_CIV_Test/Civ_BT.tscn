@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://dysl8e3jgodu5"]
 
 [ext_resource type="Script" path="res://Civilians/BT_CIV_Test/BT_civ.gd" id="1_cx1rs"]
-[ext_resource type="Texture2D" uid="uid://bxo0p6hxayf4y" path="res://TileSheet/colored_tilemap_packed.png" id="1_e5nbh"]
+[ext_resource type="Texture2D" uid="uid://d1mwt8reje42v" path="res://TileSheet/CivFrames.png" id="2_hp63y"]
 [ext_resource type="Script" path="res://Player/SoundQueue.gd" id="2_sv8ut"]
 [ext_resource type="AudioStream" uid="uid://dvoycf7w5mbka" path="res://SFX/Civilian/male-scream-in-fear-123079.mp3" id="3_hr3e3"]
 [ext_resource type="BehaviorTree" uid="uid://cpm54dc5lksn1" path="res://ai/trees/civilian.tres" id="4_0bw4j"]
@@ -270,34 +270,22 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.441568, -0.300197]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -455,11 +443,14 @@ script = ExtResource("1_cx1rs")
 sound_queue = NodePath("SoundQueue")
 
 [node name="sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.842874, 1.18855)
-texture = ExtResource("1_e5nbh")
+rotation = -0.387033
+scale = Vector2(1, 1.19577)
+texture = ExtResource("2_hp63y")
 hframes = 6
+vframes = 2
+frame = 1
 region_enabled = true
-region_rect = Rect2(32, 0, 48, 8)
+region_rect = Rect2(0, 0, 53, 17)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = 2

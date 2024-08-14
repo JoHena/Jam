@@ -12,12 +12,15 @@ extends CharacterBody2D
 
 @export var IS_SCARED: bool = false
 
-
 @export var sound_queue: SoundQueue
 @onready var anim = $AnimationPlayer
+@onready var sprite = $sprite
 
 var IS_DEAD: bool = false
 var POINTS_SCENE = preload("res://Civilians/scare_score.tscn")
+
+func _ready():
+	sprite.frame = randi_range(0,4)
 
 func _physics_process(_delta):
 	move_and_slide()
@@ -29,6 +32,7 @@ func move(dir, speed):
 	velocity = dir * speed	
 	
 	if IS_SCARED:
+		sprite.frame += 6			
 		anim.play("scared")
 		return
 		
