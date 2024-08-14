@@ -5,6 +5,8 @@ extends Node2D
 @onready var game_start_timer = $PhantomCamera2D/Start_Timer
 @onready var player = $Pausable/Player
 @onready var camera_anim = $PhantomCamera2D/AnimationPlayer
+@onready var pausable = $Pausable
+
 
 @export var behavior_tree_view: BehaviorTreeView
 @export var bt_player_parent: Node
@@ -42,7 +44,7 @@ func _on_start_timer_timeout():
 func spawnEnemy(enemy_instance):
 	var enemy = enemy_instance.instantiate()
 	enemy.position = player.global_position
-	add_child(enemy)
+	pausable.add_child(enemy)
 
 func checkPause():
 	if Input.is_action_just_pressed("pause"):
