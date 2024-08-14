@@ -6,6 +6,8 @@
 radius = 3.16228
 
 [node name="Rat" type="CharacterBody2D"]
+z_index = 3
+scale = Vector2(0.6, 0.6)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_2at0i")

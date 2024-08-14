@@ -1,17 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://ehwkavpp0k57"]
+[gd_scene load_steps=3 format=3 uid="uid://dhcob4yxs8ewv"]
 
-[ext_resource type="Texture2D" uid="uid://dikobq33tc1r0" path="res://TileSheet/TransparentSheet.png" id="1_7wshm"]
+[ext_resource type="Texture2D" uid="uid://dikobq33tc1r0" path="res://TileSheet/TransparentSheet.png" id="1_oc5j4"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0snn2"]
-radius = 2.0
-height = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_vaqa1"]
+radius = 4.0
 
-[node name="Zombie" type="CharacterBody2D"]
+[node name="EyeMonster" type="CharacterBody2D"]
+z_index = 3
+scale = Vector2(0.6, 0.6)
+collision_layer = 2
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7wshm")
+position = Vector2(0, -1.66667)
+texture = ExtResource("1_oc5j4")
 region_enabled = true
 region_rect = Rect2(99, 1, 8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_0snn2")
+position = Vector2(0, -1.66667)
+shape = SubResource("CircleShape2D_vaqa1")
