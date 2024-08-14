@@ -32,11 +32,15 @@ func move(dir, speed):
 	velocity = dir * speed	
 	
 	if IS_SCARED:
-		sprite.frame += 6			
 		anim.play("scared")
 		return
 		
 	anim.play('walk')
+
+func scareMyself():
+	if !IS_SCARED:
+		sprite.frame += 6
+	IS_SCARED = true	
 
 # When scared show the points gained	
 func showScarePoints():

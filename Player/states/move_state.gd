@@ -81,7 +81,7 @@ func scareCivs(bodys: Array):
 		if body.is_in_group('Civilians'):
 			body.handleScare()																										
 			handleScareMeter(body.SCARED_AMOUNT)
-			body.IS_SCARED = true
+			body.scareMyself()
 								
 # change scare meter amount - Animates quicker on full meter
 func handleScareMeter(scare_amount: float):

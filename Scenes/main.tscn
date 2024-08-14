@@ -1232,383 +1232,173 @@ metadata/_edit_lock_ = true
 
 [node name="Civ" parent="Pausable/Civilians" instance=ExtResource("8_4jnoi")]
 position = Vector2(33, 156)
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 
 [node name="Civ13" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(127, 225)
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ/SoundQueue")
 
 [node name="Civ2" parent="Pausable/Civilians" instance=ExtResource("8_4jnoi")]
 position = Vector2(464, 176)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 
 [node name="Civ14" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(461, 130)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ15" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(463, 223)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ16" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(379, 154)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ17" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(367, 192)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ18" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(222, 212)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ19" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(459, 151)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ3" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(38, 84)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ4" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(37, 211)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ5" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(36, 259)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ6" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(147, 225)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ7" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(152, 148)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ8" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(217, 122)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ20" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(277, 65)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ21" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(93, 305)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ22" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(32, 412)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ23" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(84, 471)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ24" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(108, 459)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ25" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(71, 460)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ26" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(99, 477)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ27" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(68, 484)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ28" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(93, 416)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ29" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(77, 417)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ30" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(139, 417)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ31" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(110, 472)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ32" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(281, 437)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ33" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(340, 482)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ34" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(266, 491)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ35" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(222, 452)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ9" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(126, 247)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ10" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(259, 250)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ11" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(201, 256)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Civ12" parent="Pausable/Civilians" node_paths=PackedStringArray("sound_queue") instance=ExtResource("8_4jnoi")]
 position = Vector2(150, 243)
 rotation = -0.262617
-SCARED_AMOUNT = 20.0
-MAX_SCARED_SPEED = 55
-MIN_SCARED_SPEED = 35
-MAX_SPEED = 30
-MIN_SPEED = 10
-IS_SCARED = false
 sound_queue = NodePath("../Civ2/SoundQueue")
 
 [node name="Background" type="TileMap" parent="."]
