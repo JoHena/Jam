@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal gain_points
+
 # Scare Props
 @export var SCARED_AMOUNT: float = 20
 
@@ -15,6 +17,7 @@ extends CharacterBody2D
 @export var sound_queue: SoundQueue
 @onready var anim = $AnimationPlayer
 @onready var sprite = $sprite
+
 
 var IS_DEAD: bool = false
 var POINTS_SCENE = preload("res://Civilians/scare_score.tscn")
@@ -39,6 +42,7 @@ func move(dir, speed):
 
 func scareMyself():
 	if !IS_SCARED:
+		Global.score += SCARED_AMOUNT
 		sprite.frame += 6
 	IS_SCARED = true	
 
@@ -53,6 +57,7 @@ func die():
 	velocity = Vector2.ZERO
 	anim.play('death')
 	await anim.animation_finished
+	Global.score += 100
 	queue_free()
 
 func handleScare():
@@ -83,18 +88,10 @@ func talk():
 func _on_area_2d_body_entered(_body):
 	velocity = -velocity
 
-#func _on_area_2d_body_exited(body):
-	#var btplayer := get_node_or_null(^"BTPlayer") as BTPlayer
-		#
-	#if btplayer and not IS_DEAD:
-		#btplayer.restart()
-
-
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	var btplayer := get_node_or_null(^"BTPlayer") as BTPlayer
 	if btplayer and not IS_DEAD:
 		btplayer.restart()
-
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	var btplayer := get_node_or_null(^"BTPlayer") as BTPlayer

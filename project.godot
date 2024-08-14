@@ -19,6 +19,7 @@ run/show_image=false
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+Global="*res://Scenes/Global.gd"
 
 [display]
 
