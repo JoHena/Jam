@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfkskxrei0k6b"]
+[gd_scene load_steps=3 format=3 uid="uid://dhcob4yxs8ewv"]
 
-[ext_resource type="Texture2D" uid="uid://dikobq33tc1r0" path="res://TileSheet/TransparentSheet.png" id="1_8ij66"]
+[ext_resource type="Texture2D" uid="uid://dikobq33tc1r0" path="res://TileSheet/TransparentSheet.png" id="1_oc5j4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vaqa1"]
 radius = 4.0
@@ -12,10 +12,11 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
-texture = ExtResource("1_8ij66")
+position = Vector2(0, -1.66667)
+texture = ExtResource("1_oc5j4")
 region_enabled = true
-region_rect = Rect2(117, 1, 8, 8)
+region_rect = Rect2(99, 1, 8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.66667)
 shape = SubResource("CircleShape2D_vaqa1")

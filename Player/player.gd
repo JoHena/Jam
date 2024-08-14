@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var sprite = $sprite
 @onready var state_machine = $state_machine
+@onready var move_state = $state_machine/move
 @onready var anim = $AnimationPlayer
 @onready var tree = $AnimationTree
 

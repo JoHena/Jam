@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @onready var main_menu = $CanvasLayer/MainMenu
 @onready var game_start_timer = $PhantomCamera2D/Start_Timer
 @onready var player = $Pausable/Player
@@ -12,7 +13,8 @@ var bt_player: BTPlayer
 var paused: bool = false
 var game_started: bool = false
 
-func _ready():									
+func _ready():		
+	player.move_state.spawn_enemy.connect(spawnEnemy)
 	main_menu.game_started.connect(start_game)
 	bt_player = bt_player_parent.find_child('BTPlayer')
 	pass # Replace with function body.	
@@ -36,7 +38,12 @@ func _on_start_timer_timeout():
 	player.spook_drain_timer.start()
 	game_started = true
 	player.CAN_MOVE = true
-	
+
+func spawnEnemy(enemy_instance):
+	var enemy = enemy_instance.instantiate()
+	enemy.position = player.global_position
+	add_child(enemy)
+
 func checkPause():
 	if Input.is_action_just_pressed("pause"):
 		paused = !paused

@@ -1,5 +1,9 @@
 extends State
 
+signal spawn_enemy(enemy)
+
+var eyemonster =  preload("res://Monsters/EyeMonster.tscn")
+
 # Exports
 @export var SPEED: float = 100
 @export var ACCELERATION: float = 10
@@ -31,6 +35,7 @@ func process_physics(_delta: float) -> State:
 	
 func process_input(_delta):
 	scream()
+	summonMonster()
 	shadow_step()
 
 # We do this here instead of another state to still move while screaming
@@ -57,6 +62,12 @@ func shadow_step():
 			sound_queue.playEffect('dimention_shift', 1.32, 1.72)
 			switch_colission_layers()
 
+func summonMonster():
+	if Input.is_action_just_pressed('summon_eye'):
+		spawn_enemy.emit(eyemonster)
+		
+
+
 func switch_colission_layers():
 	if IS_SHADOW:
 		# If is shadow return to normal 
@@ -82,7 +93,8 @@ func scareCivs(bodys: Array):
 			body.handleScare()																										
 			handleScareMeter(body.SCARED_AMOUNT)
 			body.scareMyself()
-								
+					
+			
 # change scare meter amount - Animates quicker on full meter
 func handleScareMeter(scare_amount: float):
 	scaremeter.value += scare_amount
