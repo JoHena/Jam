@@ -2,11 +2,9 @@ extends State
 
 signal spawn_enemy(enemy)
 
-var eyemonster =  preload("res://Monsters/EyeMonster.tscn")
-var zombie = preload("res://Monsters/zombie.tscn")
-var skeleton = preload("res://Monsters/skeleton.tscn")
-var rat = preload("res://Monsters/rat.tscn")
-var ghast = preload("res://Monsters/ghast.tscn")
+var zombie = preload("res://Monsters/Zombie.tscn")
+var skeleton = preload("res://Monsters/Skeleton.tscn")
+var ghast = preload("res://Monsters/Ghast.tscn")
 
 # Exports
 @export var SPEED: float = 100
@@ -67,18 +65,15 @@ func shadow_step():
 			switch_colission_layers()
 
 func summonMonster():
-	if Input.is_action_just_pressed('summon_eye'):
-		spawn_enemy.emit(eyemonster)
 	if Input.is_action_just_pressed('summon_zombie'):
+		scaremeter.value -= 10
 		spawn_enemy.emit(zombie)
 	if Input.is_action_just_pressed('summon_ghast'):
+		scaremeter.value -= 20
 		spawn_enemy.emit(ghast)
 	if Input.is_action_just_pressed('summon_skel'):
+		scaremeter.value -= 30
 		spawn_enemy.emit(skeleton)
-	if Input.is_action_just_pressed('summon_rat'):
-		spawn_enemy.emit(rat)
-		
-
 
 func switch_colission_layers():
 	if IS_SHADOW:

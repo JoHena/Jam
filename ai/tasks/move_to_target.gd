@@ -18,7 +18,7 @@ func _tick(_delta: float) -> Status:
 	var dir = agent.global_position.direction_to(target_pos)
 	
 	if abs(agent.global_position - target_pos) < tolerance:
-		agent.move(dir, 0)
+		agent.move(Vector2.ZERO)
 		
 		target.talk()
 		
@@ -30,10 +30,7 @@ func _tick(_delta: float) -> Status:
 				
 		return SUCCESS
 	
-	if agent.IS_SCARED:
-		agent.move(dir, randi_range(agent.MIN_SCARED_SPEED, agent.MAX_SCARED_SPEED))
-	else:
-		agent.move(dir, randi_range(agent.MIN_SPEED, agent.MAX_SPEED))
+	agent.move(dir)
 	
 	return RUNNING
 	

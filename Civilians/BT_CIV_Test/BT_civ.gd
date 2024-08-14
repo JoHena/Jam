@@ -17,7 +17,7 @@ signal gain_points
 @export var sound_queue: SoundQueue
 @onready var anim = $AnimationPlayer
 @onready var sprite = $sprite
-
+@onready var health = $Health
 
 var IS_DEAD: bool = false
 var POINTS_SCENE = preload("res://Civilians/scare_score.tscn")
@@ -31,8 +31,11 @@ func _physics_process(_delta):
 func check_for_self(node):
 	return node == self
 
-func move(dir, speed):
-	velocity = dir * speed	
+func move(dir):
+	if IS_SCARED:
+		velocity = dir * randi_range(MIN_SCARED_SPEED, MAX_SCARED_SPEED)
+	else:
+		velocity = dir * randi_range(MIN_SPEED, MAX_SPEED)
 	
 	if IS_SCARED:
 		anim.play("scared")
@@ -73,7 +76,7 @@ func talk():
 	if btplayer:
 		btplayer.set_active(false)
 		
-	move(Vector2.ZERO, 0)
+	move(Vector2.ZERO)
 	
 	if(IS_SCARED):
 		anim.play('alert_person')
@@ -85,6 +88,28 @@ func talk():
 	if btplayer and not IS_DEAD:
 		btplayer.restart()
 		
+
+func take_damage(amount: float):
+	var btplayer := get_node_or_null(^"BTPlayer") as BTPlayer
+	
+	if btplayer:
+		btplayer.set_active(false)
+
+	health.take_damage(amount)
+	
+	if health.health <= 0:
+		die()
+		return
+	
+	Global.score += 50
+	
+	anim.play('damaged')
+	await anim.animation_finished
+	
+	if btplayer and not IS_DEAD:
+		btplayer.restart()
+
+
 func _on_area_2d_body_entered(_body):
 	velocity = -velocity
 

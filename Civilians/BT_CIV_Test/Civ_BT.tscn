@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dysl8e3jgodu5"]
+[gd_scene load_steps=27 format=3 uid="uid://dysl8e3jgodu5"]
 
 [ext_resource type="Script" path="res://Civilians/BT_CIV_Test/BT_civ.gd" id="1_cx1rs"]
 [ext_resource type="Texture2D" uid="uid://d1mwt8reje42v" path="res://TileSheet/CivFrames.png" id="2_hp63y"]
@@ -46,6 +46,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.92549, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_mqt2g"]
@@ -224,6 +236,21 @@ tracks/6/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_w1phy"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.92549, 0, 0, 1), Color(1, 1, 1, 1), Color(0.92549, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_1gpxy"]
 resource_name = "death"
 tracks/0/type = "value"
@@ -366,6 +393,7 @@ _data = {
 "RESET": SubResource("Animation_p3u7n"),
 "alert_person": SubResource("Animation_mqt2g"),
 "chatting": SubResource("Animation_tf6k3"),
+"damaged": SubResource("Animation_w1phy"),
 "death": SubResource("Animation_1gpxy"),
 "scared": SubResource("Animation_16b10"),
 "tired": SubResource("Animation_65gp6"),
@@ -439,10 +467,12 @@ texture_filter = 1
 texture_repeat = 1
 scale = Vector2(0.8, 0.8)
 collision_layer = 4
+collision_mask = 129
 script = ExtResource("1_cx1rs")
 sound_queue = NodePath("SoundQueue")
 
 [node name="sprite" type="Sprite2D" parent="."]
+modulate = Color(0.92549, 0, 0, 1)
 rotation = -0.387033
 scale = Vector2(1, 1.19577)
 texture = ExtResource("2_hp63y")
@@ -513,13 +543,16 @@ behavior_tree = ExtResource("4_0bw4j")
 blackboard_plan = SubResource("BlackboardPlan_o6ofh")
 
 [node name="Health" type="ProgressBar" parent="."]
+visible = false
 modulate = Color(0.214557, 1, 0.951185, 1)
 z_index = 11
-offset_left = -6.25
-offset_top = -7.5
-offset_right = 57.75
-offset_bottom = 19.5
-scale = Vector2(0.20079, 0.054093)
+offset_left = -3.75
+offset_top = -10.0
+offset_right = 60.25
+offset_bottom = 17.0
+rotation = 0.132283
+scale = Vector2(0.139051, 0.0327348)
+value = 100.0
 show_percentage = false
 script = ExtResource("8_4eien")
 
@@ -532,8 +565,11 @@ autoplay = "spook"
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(0.375, 0.5)
 
+[node name="Invincibility_Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="finished" from="SoundQueue/scream" to="." method="_on_scream_finished"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Invincibility_Timer" to="." method="_on_invincibility_timer_timeout"]

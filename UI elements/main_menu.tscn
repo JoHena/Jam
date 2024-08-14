@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c3jos1xjimqgy"]
+[gd_scene load_steps=36 format=3 uid="uid://c3jos1xjimqgy"]
 
 [ext_resource type="Script" path="res://UI elements/MainMenu.gd" id="1_a6wgn"]
 [ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="3_7n5lc"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://t1p33m2xoh3p" path="res://UI elements/keys/keyboard_2_outline.png" id="15_cdla0"]
 [ext_resource type="Texture2D" uid="uid://dr2dph1ylxfot" path="res://UI elements/keys/keyboard_3_outline.png" id="16_nimiv"]
 [ext_resource type="Texture2D" uid="uid://dx7vr57y3dlo3" path="res://UI elements/keys/keyboard_space_outline.png" id="16_pt7eb"]
-[ext_resource type="Texture2D" uid="uid://bx7io4c7qu3u1" path="res://UI elements/keys/keyboard_4_outline.png" id="17_m8fyt"]
 [ext_resource type="PackedScene" uid="uid://w8ksfpy0bik2" path="res://UI elements/credits.tscn" id="18_ad7fc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_is83q"]
@@ -631,7 +630,8 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 8
 theme_override_constants/shadow_outline_size = 2
 theme_override_font_sizes/font_size = 42
-text = "Ghost Game"
+text = "Let's Boo"
+horizontal_alignment = 1
 
 [node name="Options_Container" type="VBoxContainer" parent="VBoxContainer"]
 visible = false
@@ -754,27 +754,21 @@ offset_bottom = 40.0
 
 [node name="Keyboard1Outline" type="Sprite2D" parent="Keys/Summon Keys"]
 material = ExtResource("3_j5vm7")
-position = Vector2(408, 83)
+position = Vector2(427, 83)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_dqxnm")
 
 [node name="Keyboard2Outline" type="Sprite2D" parent="Keys/Summon Keys"]
 material = ExtResource("3_j5vm7")
-position = Vector2(444, 83)
+position = Vector2(463, 83)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_cdla0")
 
 [node name="Keyboard3Outline" type="Sprite2D" parent="Keys/Summon Keys"]
 material = ExtResource("3_j5vm7")
-position = Vector2(480, 83)
+position = Vector2(499, 83)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_nimiv")
-
-[node name="Keyboard4Outline" type="Sprite2D" parent="Keys/Summon Keys"]
-material = ExtResource("3_j5vm7")
-position = Vector2(516, 84)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("17_m8fyt")
 
 [node name="Summons" type="Label" parent="Keys/Summon Keys"]
 material = ExtResource("3_j5vm7")
