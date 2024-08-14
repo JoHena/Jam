@@ -1,0 +1,546 @@
+[gd_scene load_steps=26 format=3 uid="uid://dysl8e3jgodu5"]
+
+[ext_resource type="Script" path="res://Civilians/BT_CIV_Test/BT_civ.gd" id="1_cx1rs"]
+[ext_resource type="Texture2D" uid="uid://bxo0p6hxayf4y" path="res://TileSheet/colored_tilemap_packed.png" id="1_e5nbh"]
+[ext_resource type="Script" path="res://Player/SoundQueue.gd" id="2_sv8ut"]
+[ext_resource type="AudioStream" uid="uid://dvoycf7w5mbka" path="res://SFX/Civilian/male-scream-in-fear-123079.mp3" id="3_hr3e3"]
+[ext_resource type="BehaviorTree" uid="uid://cpm54dc5lksn1" path="res://ai/trees/civilian.tres" id="4_0bw4j"]
+[ext_resource type="Material" uid="uid://cwvo4askjegkl" path="res://UI elements/wavey_text.tres" id="5_6dc4w"]
+[ext_resource type="Texture2D" uid="uid://ccvc6gk5gju0w" path="res://Civilians/BT_CIV_Test/Speech/chatting_bubble.png" id="6_pv3qx"]
+[ext_resource type="Script" path="res://Civilians/BT_CIV_Test/Health.gd" id="8_4eien"]
+
+[sub_resource type="Gradient" id="Gradient_c602f"]
+offsets = PackedFloat32Array(0, 0.681818)
+colors = PackedColorArray(0.51777, 0.334068, 0.2785, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_71mmg"]
+gradient = SubResource("Gradient_c602f")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wthvf"]
+size = Vector2(7.96876, 9.0625)
+
+[sub_resource type="Animation" id="Animation_p3u7n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("nonsense_bubble:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("alert_bubble:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mqt2g"]
+resource_name = "alert_person"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 1.9, 2.1, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.418879, 0.418879, -0.418879, 0.418879, -0.418879, 0.418879, -0.418879, 0.418879, -0.418879, 0.418879, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("alert_bubble:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.025, 0.025)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("alert_bubble:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 2, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3, -3), Vector2(3, -6), Vector2(3, -6), Vector2(3, -9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("alert_bubble:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.9, 1.3, 1.6, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0.972719, 0, 0.139814, 1), Color(0.67451, 0.243137, 0.00784314, 1), Color(0.972719, 0, 0.139814, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("alert_bubble:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("nonsense_bubble:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("alert_bubble:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_tf6k3"]
+resource_name = "chatting"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("nonsense_bubble:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("nonsense_bubble:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 0.9, 1.8, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0.367585, 0.000708148, 0.504692, 1), Color(0.772549, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("nonsense_bubble:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 2, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3, -3), Vector2(3, -6), Vector2(3, -6), Vector2(3, -9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("nonsense_bubble:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.025, 0.025)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprite:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 1.9, 2.1, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.279253, 0.279253, -0.279253, 0.279253, -0.279253, 0.279253, -0.279253, 0.279253, -0.279253, 0.279253, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("alert_bubble:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("nonsense_bubble:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_1gpxy"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(0, 0.592157, 1, 1), Color(0.618801, 0.353239, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_16b10"]
+resource_name = "scared"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.441568, -0.300197]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.352941, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_65gp6"]
+resource_name = "tired"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.6875, 1.375), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bxeqw"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.387033, 0.522241]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1.19577), Vector2(1, 1.0036)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c8l33"]
+_data = {
+"RESET": SubResource("Animation_p3u7n"),
+"alert_person": SubResource("Animation_mqt2g"),
+"chatting": SubResource("Animation_tf6k3"),
+"death": SubResource("Animation_1gpxy"),
+"scared": SubResource("Animation_16b10"),
+"tired": SubResource("Animation_65gp6"),
+"walk": SubResource("Animation_bxeqw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5whxx"]
+size = Vector2(20, 23.75)
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_o6ofh"]
+
+[sub_resource type="Animation" id="Animation_gjvfy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.214557, 1, 0.951185, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rqsha"]
+resource_name = "spook"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.214557, 1, 0.951185, 1), Color(0.572549, 0.482353, 1, 1), Color(0.371646, 0.933333, 0.960948, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ve6j6"]
+resource_name = "spook_full"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.214557, 1, 0.951185, 1), Color(0.572549, 0.482353, 1, 1), Color(0.371646, 0.933333, 0.960948, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j8pcf"]
+_data = {
+"RESET": SubResource("Animation_gjvfy"),
+"spook": SubResource("Animation_rqsha"),
+"spook_full": SubResource("Animation_ve6j6")
+}
+
+[node name="Civ" type="CharacterBody2D" node_paths=PackedStringArray("sound_queue") groups=["Civilians"]]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.8, 0.8)
+collision_layer = 4
+script = ExtResource("1_cx1rs")
+sound_queue = NodePath("SoundQueue")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.842874, 1.18855)
+texture = ExtResource("1_e5nbh")
+hframes = 6
+region_enabled = true
+region_rect = Rect2(32, 0, 48, 8)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 2
+scale = Vector2(0.3, 0.3)
+texture = SubResource("GradientTexture2D_71mmg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1.19209e-07, -1.19209e-07)
+shape = SubResource("RectangleShape2D_wthvf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c8l33")
+}
+speed_scale = 2.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+
+[node name="Wall_Detection" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5.96046e-07, -0.624998)
+scale = Vector2(0.999998, 0.999998)
+shape = SubResource("RectangleShape2D_5whxx")
+
+[node name="SoundQueue" type="Node" parent="."]
+script = ExtResource("2_sv8ut")
+
+[node name="scream" type="AudioStreamPlayer2D" parent="SoundQueue"]
+stream = ExtResource("3_hr3e3")
+pitch_scale = 1.53
+
+[node name="nonsense_bubble" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+material = ExtResource("5_6dc4w")
+position = Vector2(3, -3)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_pv3qx")
+hframes = 12
+
+[node name="alert_bubble" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+material = ExtResource("5_6dc4w")
+position = Vector2(3, -3)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_pv3qx")
+hframes = 12
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+behavior_tree = ExtResource("4_0bw4j")
+blackboard_plan = SubResource("BlackboardPlan_o6ofh")
+
+[node name="Health" type="ProgressBar" parent="."]
+modulate = Color(0.214557, 1, 0.951185, 1)
+z_index = 11
+offset_left = -6.25
+offset_top = -7.5
+offset_right = 57.75
+offset_bottom = 19.5
+scale = Vector2(0.20079, 0.054093)
+show_percentage = false
+script = ExtResource("8_4eien")
+
+[node name="scare_anim" type="AnimationPlayer" parent="Health"]
+libraries = {
+"": SubResource("AnimationLibrary_j8pcf")
+}
+autoplay = "spook"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.375, 0.5)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="finished" from="SoundQueue/scream" to="." method="_on_scream_finished"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

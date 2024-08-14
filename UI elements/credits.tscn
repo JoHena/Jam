@@ -1,75 +1,112 @@
-[gd_scene load_steps=3 format=3 uid="uid://w8ksfpy0bik2"]
+[gd_scene load_steps=12 format=3 uid="uid://w8ksfpy0bik2"]
 
+[ext_resource type="Script" path="res://UI elements/credits.gd" id="1_0yc2i"]
 [ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="1_2p83b"]
 [ext_resource type="Material" uid="uid://cwvo4askjegkl" path="res://UI elements/wavey_text.tres" id="2_gdfoa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c31vb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8iphy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nw44p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl5dp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xi1w0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ul78m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgw0f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8id6h"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -13.0
-offset_right = -1.0
-offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0yc2i")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_top = 62.0
-offset_right = 293.0
-offset_bottom = 361.0
+offset_left = 97.0
+offset_top = 83.0
+offset_right = 390.0
+offset_bottom = 382.0
+scale = Vector2(0.56, 0.629808)
 theme = ExtResource("1_2p83b")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Yom" type="Button" parent="MarginContainer/VBoxContainer"]
 material = ExtResource("2_gdfoa")
 custom_minimum_size = Vector2(75, 120)
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c31vb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8iphy")
 text = "Yom"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="BBB" type="Button" parent="MarginContainer/VBoxContainer"]
 material = ExtResource("2_gdfoa")
 custom_minimum_size = Vector2(75, 120)
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nw44p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kl5dp")
 text = "BBB_Bomb"
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource("2_gdfoa")
+custom_minimum_size = Vector2(75, 120)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nw44p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kl5dp")
+text = "Back"
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 330.0
-offset_top = 73.0
-offset_right = 640.0
-offset_bottom = 145.0
+offset_left = 380.0
+offset_top = 85.0
+offset_right = 673.0
+offset_bottom = 384.0
+scale = Vector2(0.56, 0.629808)
 theme = ExtResource("1_2p83b")
 theme_override_constants/margin_top = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer2/VBoxContainer"]
+[node name="3Duck" type="Button" parent="MarginContainer2/VBoxContainer"]
 material = ExtResource("2_gdfoa")
 custom_minimum_size = Vector2(75, 120)
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xi1w0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ul78m")
 text = "ThreeDuck"
 
-[node name="Button2" type="Button" parent="MarginContainer2/VBoxContainer"]
+[node name="Fosty" type="Button" parent="MarginContainer2/VBoxContainer"]
 material = ExtResource("2_gdfoa")
 custom_minimum_size = Vector2(75, 120)
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_dgw0f")
+theme_override_styles/focus = SubResource("StyleBoxTexture_8id6h")
 text = "Fosty"
 
 [node name="Label" type="Label" parent="."]
 material = ExtResource("2_gdfoa")
-layout_mode = 2
-offset_left = 124.0
-offset_top = 2.0
-offset_right = 485.0
-offset_bottom = 44.0
+layout_mode = 0
+offset_left = 145.0
+offset_top = 12.0
+offset_right = 506.0
+offset_bottom = 54.0
 theme_override_colors/font_color = Color(0.635294, 0, 0.905882, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "This game was made by :"
+text = "Made by "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

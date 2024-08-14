@@ -79,20 +79,17 @@ func switch_colission_layers():
 func scareCivs(bodys: Array):
 	for body in bodys:
 		if body.is_in_group('Civilians'):
-			if body.TIMES_SCARED < body.SCARES_TILL_DEATH:
-				body.handleScare()
-				handleScareMeter(body.SCARED_AMOUNT)
-			body.is_scared = true
-			body.TIMES_SCARED += 1
-
+			body.handleScare()																										
+			handleScareMeter(body.SCARED_AMOUNT)
+			body.IS_SCARED = true
+								
 # change scare meter amount - Animates quicker on full meter
 func handleScareMeter(scare_amount: float):
 	scaremeter.value += scare_amount
 	if scaremeter.value == 100:
 		scaremeter.get_child(0).play('spook_full')
 	else:
-		scaremeter.get_child(0).play('spook')
-
+		scaremeter.get_child(0).play('spook')	
 
 func _on_shadow_timer_timeout():
 	scaremeter.value -= SHADOW_SPOOK_DRAIN_AMOUNT

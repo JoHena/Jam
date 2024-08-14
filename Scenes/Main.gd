@@ -2,23 +2,30 @@ extends Node2D
 
 @onready var main_menu = $CanvasLayer/MainMenu
 @onready var game_start_timer = $PhantomCamera2D/Start_Timer
-@onready var player = $Player
+@onready var player = $Pausable/Player
 @onready var camera_anim = $PhantomCamera2D/AnimationPlayer
-#PauseMenu
-@onready var pause_menu = $"CanvasLayer/Pause Menu"
 
+@export var behavior_tree_view: BehaviorTreeView
+@export var bt_player_parent: Node
 
-func _ready():
+var bt_player: BTPlayer
+var paused: bool = false
+var game_started: bool = false
+
+func _ready():									
 	main_menu.game_started.connect(start_game)
-	pass # Replace with function body.
+	bt_player = bt_player_parent.find_child('BTPlayer')
+	pass # Replace with function body.	
 
+func _process(_delta):
+	# For testing behaviour tree	
+	if is_instance_valid(bt_player):
+		var inst: BTTask = bt_player.get_tree_instance()
+		var bt_data: BehaviorTreeData = BehaviorTreeData.create_from_tree_instance(inst)
+		behavior_tree_view.update_tree(bt_data)
 
-func _process(delta):
-	var _x = delta
-	if Input.is_action_just_pressed("pause"):
-		#pause(get_tree().paused)
-		pause()
-	pass
+	if game_started:
+		checkPause()
 
 func start_game():
 	game_start_timer.start()
@@ -26,22 +33,12 @@ func start_game():
 	player.shadow_anim.play("shadow_exit")
 
 func _on_start_timer_timeout():
+	game_started = true
 	player.CAN_MOVE = true
 	
-#func pause(state):
-	#if state:
-		#pause_menu.hide()
-		#get_tree().paused = false
-	#else:
-		#get_tree().paused = true
-		#pause_menu.show()
+func checkPause():
+	if Input.is_action_just_pressed("pause"):
+		paused = !paused
+		main_menu.paused(paused)
+			
 		
-func pause():
-	if not Input.is_action_just_pressed("pause"):
-		return # do nothing if escape isn't pressed
-	elif pause_menu.visible: # we are paused
-		pause_menu.visible = false
-		get_tree().paused = false
-	else: # we are unpaused
-		pause_menu.visible = true
-		get_tree().paused = true

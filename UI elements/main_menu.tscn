@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c3jos1xjimqgy"]
+[gd_scene load_steps=37 format=3 uid="uid://c3jos1xjimqgy"]
 
 [ext_resource type="Script" path="res://UI elements/MainMenu.gd" id="1_a6wgn"]
 [ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="3_7n5lc"]
@@ -26,6 +26,10 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_injm1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy577"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtao5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_atin0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3osr1"]
 
@@ -129,20 +133,33 @@ tracks/7/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_pkjjn"]
 resource_name = "credits_load"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/Main_Container:visible")
+tracks/0/path = NodePath("Credits:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(1, 1.9),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -159,38 +176,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Credits:visible")
+tracks/2/path = NodePath("VBoxContainer/Main_Container:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Credits:modulate")
+tracks/3/path = NodePath("Credits:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("VBoxContainer/Game_Name:visible")
+tracks/4/path = NodePath("Keys:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -207,10 +224,22 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Keys:modulate")
+tracks/6/path = NodePath("VBoxContainer/Game_Name:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VBoxContainer/Game_Name:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -227,10 +256,10 @@ tracks/0/path = NodePath("VBoxContainer/Options_Container:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -292,6 +321,54 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Credits:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Credits:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VBoxContainer/Game_Name:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("VBoxContainer/Game_Name:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_k7onu"]
 resource_name = "onLoad"
@@ -343,6 +420,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_08dhj"]
@@ -419,6 +508,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VBoxContainer/Game_Name:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VBoxContainer/Game_Name:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7add"]
@@ -560,6 +673,8 @@ material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(120, 70)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rtao5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_atin0")
 text = "Credits"
 
 [node name="Exit" type="Button" parent="VBoxContainer/Main_Container/Main"]
@@ -734,10 +849,12 @@ offset_bottom = -32.6484
 scale = Vector2(0.485477, 1.56504)
 text = "Spook Meter"
 
-[node name="Credits" parent="." instance=ExtResource("18_ad7fc")]
+[node name="Credits" parent="." node_paths=PackedStringArray("anim", "sound_queue") instance=ExtResource("18_ad7fc")]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
+anim = NodePath("../AnimationPlayer")
+sound_queue = NodePath("../SoundQueue")
 
 [connection signal="pressed" from="VBoxContainer/Main_Container/Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Main_Container/Main/Options" to="." method="_on_options_pressed"]

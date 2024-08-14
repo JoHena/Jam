@@ -1,0 +1,156 @@
+[gd_resource type="BehaviorTree" load_steps=43 format=3 uid="uid://cpm54dc5lksn1"]
+
+[ext_resource type="Script" path="res://ai/tasks/take_break.gd" id="1_kabnm"]
+[ext_resource type="Script" path="res://ai/tasks/choose_random_position.gd" id="1_lkobb"]
+[ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_64ekr"]
+[ext_resource type="Script" path="res://ai/tasks/find_target.gd" id="3_4inyb"]
+[ext_resource type="Script" path="res://ai/tasks/move_to_target.gd" id="4_dfiic"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_l5v1y"]
+
+[sub_resource type="BBVariant" id="BBVariant_tjlye"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_4llnq"]
+property = &"IS_SCARED"
+value = SubResource("BBVariant_tjlye")
+
+[sub_resource type="BTAction" id="BTAction_4pee6"]
+script = ExtResource("1_kabnm")
+
+[sub_resource type="BBNode" id="BBNode_t6bbm"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_sfq5l"]
+animation_player = SubResource("BBNode_t6bbm")
+animation_name = &"tired"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_vcdk7"]
+min_duration = 1.5
+max_duration = 3.0
+
+[sub_resource type="BTSequence" id="BTSequence_s5yr7"]
+custom_name = "Take Break"
+children = [SubResource("BTAction_4pee6"), SubResource("BTPlayAnimation_sfq5l"), SubResource("BTRandomWait_vcdk7")]
+metadata/_weight_ = 1.47761
+
+[sub_resource type="BTAction" id="BTAction_3ed2v"]
+script = ExtResource("1_lkobb")
+dir_var = &"dir"
+
+[sub_resource type="BTAction" id="BTAction_58es5"]
+script = ExtResource("2_64ekr")
+dir_var = &"dir"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_sndf7"]
+max_duration = 6.0
+
+[sub_resource type="BTSequence" id="BTSequence_kcde0"]
+custom_name = "Random Move Scared"
+children = [SubResource("BTAction_3ed2v"), SubResource("BTAction_58es5"), SubResource("BTRandomWait_sndf7")]
+metadata/_weight_ = 2.02594
+
+[sub_resource type="BTAction" id="BTAction_whve7"]
+script = ExtResource("3_4inyb")
+group = &"Civilians"
+target_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_0dbpl"]
+script = ExtResource("4_dfiic")
+target_Var = &"target"
+tolerance = Vector2(8, 8)
+
+[sub_resource type="BBNode" id="BBNode_ie8gg"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_c0dj0"]
+animation_player = SubResource("BBNode_ie8gg")
+animation_name = &"alert_person"
+
+[sub_resource type="BTWait" id="BTWait_6jc4q"]
+duration = 3.0
+
+[sub_resource type="BTSequence" id="BTSequence_qv7q4"]
+custom_name = "Alert Friendly "
+children = [SubResource("BTAction_whve7"), SubResource("BTAction_0dbpl"), SubResource("BTPlayAnimation_c0dj0"), SubResource("BTWait_6jc4q")]
+metadata/_weight_ = 1.5
+
+[sub_resource type="BTProbabilitySelector" id="BTProbabilitySelector_43hag"]
+children = [SubResource("BTSequence_s5yr7"), SubResource("BTSequence_kcde0"), SubResource("BTSequence_qv7q4")]
+
+[sub_resource type="BTSequence" id="BTSequence_4uor5"]
+custom_name = "IS_SCARED"
+children = [SubResource("BTCheckAgentProperty_4llnq"), SubResource("BTProbabilitySelector_43hag")]
+
+[sub_resource type="BTAction" id="BTAction_fe6x3"]
+script = ExtResource("1_kabnm")
+
+[sub_resource type="BBNode" id="BBNode_0vdjq"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_6ws8m"]
+animation_player = SubResource("BBNode_0vdjq")
+animation_name = &"tired"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_ujpah"]
+max_duration = 6.0
+
+[sub_resource type="BTSequence" id="BTSequence_fm2ai"]
+custom_name = "Take Break"
+children = [SubResource("BTAction_fe6x3"), SubResource("BTPlayAnimation_6ws8m"), SubResource("BTRandomWait_ujpah")]
+
+[sub_resource type="BTAction" id="BTAction_r47de"]
+script = ExtResource("1_lkobb")
+dir_var = &"dir"
+
+[sub_resource type="BTAction" id="BTAction_1laqy"]
+script = ExtResource("2_64ekr")
+dir_var = &"dir"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_da2w8"]
+max_duration = 6.0
+
+[sub_resource type="BTSequence" id="BTSequence_ig2ah"]
+custom_name = "Random Move Sequence"
+children = [SubResource("BTAction_r47de"), SubResource("BTAction_1laqy"), SubResource("BTRandomWait_da2w8")]
+
+[sub_resource type="BTAction" id="BTAction_dcth6"]
+script = ExtResource("3_4inyb")
+group = &"Civilians"
+target_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_boe68"]
+script = ExtResource("4_dfiic")
+target_Var = &"target"
+tolerance = Vector2(8, 8)
+
+[sub_resource type="BBNode" id="BBNode_txwau"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_7iort"]
+animation_player = SubResource("BBNode_txwau")
+animation_name = &"chatting"
+
+[sub_resource type="BTWait" id="BTWait_y5k1x"]
+duration = 3.0
+
+[sub_resource type="BTSequence" id="BTSequence_m330o"]
+custom_name = "Move To Friendly"
+children = [SubResource("BTAction_dcth6"), SubResource("BTAction_boe68"), SubResource("BTPlayAnimation_7iort"), SubResource("BTWait_y5k1x")]
+metadata/_weight_ = 0.226924
+
+[sub_resource type="BTProbabilitySelector" id="BTProbabilitySelector_kvf83"]
+children = [SubResource("BTSequence_fm2ai"), SubResource("BTSequence_ig2ah"), SubResource("BTSequence_m330o")]
+
+[sub_resource type="BTSelector" id="BTSelector_okoxa"]
+children = [SubResource("BTSequence_4uor5"), SubResource("BTProbabilitySelector_kvf83")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_l5v1y")
+root_task = SubResource("BTSelector_okoxa")

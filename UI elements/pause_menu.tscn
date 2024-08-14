@@ -1,37 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4b6rst7ssknh"]
+[gd_scene load_steps=4 format=3 uid="uid://b4b6rst7ssknh"]
 
 [ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="1_kpiiw"]
 [ext_resource type="Script" path="res://UI elements/pause_menu.gd" id="1_xmcde"]
+[ext_resource type="Material" uid="uid://cwvo4askjegkl" path="res://UI elements/wavey_text.tres" id="2_kcv0i"]
 
 [node name="Pause Menu" type="Control"]
 process_mode = 2
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
 grow_vertical = 2
 script = ExtResource("1_xmcde")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 128.0
+offset_right = 248.0
+offset_bottom = 154.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource("2_kcv0i")
 custom_minimum_size = Vector2(120, 75)
 layout_mode = 2
 theme = ExtResource("1_kpiiw")
 text = "Resume"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource("2_kcv0i")
 custom_minimum_size = Vector2(120, 75)
 layout_mode = 2
 theme = ExtResource("1_kpiiw")
 text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
