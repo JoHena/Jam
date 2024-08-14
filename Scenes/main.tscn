@@ -2547,6 +2547,7 @@ offset_right = -28.0
 offset_bottom = -3.0
 grow_horizontal = 1
 grow_vertical = 1
+metadata/_edit_lock_ = true
 
 [node name="BehaviorTreeView" type="BehaviorTreeView" parent="CanvasLayer"]
 visible = false
@@ -2554,6 +2555,7 @@ offset_left = 266.0
 offset_top = 7.0
 offset_right = 635.0
 offset_bottom = 351.0
+metadata/_edit_lock_ = true
 
 [node name="Score" type="Label" parent="CanvasLayer"]
 modulate = Color(0.262745, 0.4, 1, 1)
@@ -2564,5 +2566,6 @@ offset_right = 580.0
 offset_bottom = 36.0
 text = "Score: 0"
 script = ExtResource("16_tbhbo")
+metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="PhantomCamera2D/Start_Timer" to="." method="_on_start_timer_timeout"]
