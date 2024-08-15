@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c3jos1xjimqgy"]
+[gd_scene load_steps=37 format=3 uid="uid://c3jos1xjimqgy"]
 
 [ext_resource type="Script" path="res://UI elements/MainMenu.gd" id="1_a6wgn"]
 [ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="3_7n5lc"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://eruwg0twudkc" path="res://SFX/UI/Click_GhostFolder.wav" id="6_d7c3n"]
 [ext_resource type="AudioStream" uid="uid://m2xvohlk08g5" path="res://Music/GhostMenu2.wav" id="7_knbne"]
 [ext_resource type="Texture2D" uid="uid://d2t2okoyrlgkr" path="res://UI elements/keys/keyboard_a.png" id="8_0brfp"]
+[ext_resource type="AudioStream" uid="uid://ceot27hir0fm2" path="res://Music/GameMusic_PolterPanic_GhostFolder.wav" id="8_7tmod"]
 [ext_resource type="Texture2D" uid="uid://cp02re3cpehrp" path="res://UI elements/keys/keyboard_w.png" id="9_xuoei"]
 [ext_resource type="Texture2D" uid="uid://lxxckvu0ag6j" path="res://UI elements/keys/keyboard_s.png" id="10_r2r3c"]
 [ext_resource type="Texture2D" uid="uid://da5m8mcpoj518" path="res://UI elements/keys/keyboard_d.png" id="11_1u3pr"]
@@ -18,21 +19,21 @@
 [ext_resource type="Texture2D" uid="uid://dx7vr57y3dlo3" path="res://UI elements/keys/keyboard_space_outline.png" id="16_pt7eb"]
 [ext_resource type="PackedScene" uid="uid://w8ksfpy0bik2" path="res://UI elements/credits.tscn" id="18_ad7fc"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_is83q"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ipd7"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_injm1"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_is83q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy577"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtao5"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_injm1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_atin0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3osr1"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtao5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4bk1p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3osr1"]
 
 [sub_resource type="Animation" id="Animation_pabpf"]
 length = 0.001
@@ -715,8 +716,8 @@ material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(110, 70)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_is83q")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7ipd7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_is83q")
 text = "Play"
 
 [node name="Options" type="Button" parent="VBoxContainer/Main_Container/Main"]
@@ -724,8 +725,8 @@ material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(120, 70)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_injm1")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fy577")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_injm1")
 text = "Options"
 
 [node name="Credits" type="Button" parent="VBoxContainer/Main_Container/Main"]
@@ -733,8 +734,8 @@ material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(120, 70)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_rtao5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_atin0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rtao5")
 text = "Credits"
 
 [node name="Exit" type="Button" parent="VBoxContainer/Main_Container/Main"]
@@ -742,8 +743,8 @@ material = ExtResource("3_j5vm7")
 custom_minimum_size = Vector2(120, 70)
 layout_mode = 2
 theme = ExtResource("3_7n5lc")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_3osr1")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4bk1p")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3osr1")
 text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -760,6 +761,9 @@ stream = ExtResource("6_d7c3n")
 
 [node name="menu_music" type="AudioStreamPlayer2D" parent="SoundQueue"]
 stream = ExtResource("7_knbne")
+
+[node name="game_music" type="AudioStreamPlayer2D" parent="SoundQueue"]
+stream = ExtResource("8_7tmod")
 
 [node name="Keys" type="Control" parent="."]
 anchors_preset = 0

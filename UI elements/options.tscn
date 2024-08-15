@@ -5,9 +5,9 @@
 [ext_resource type="Theme" uid="uid://1jm23fph1ckn" path="res://UI elements/main_menu.tres" id="3_pb7ll"]
 [ext_resource type="Material" uid="uid://cwvo4askjegkl" path="res://UI elements/wavey_text.tres" id="3_xx81e"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjhsh"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1v1t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjhsh"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -58,8 +58,8 @@ offset_top = 149.0
 offset_right = 124.0
 offset_bottom = 224.0
 theme = ExtResource("3_pb7ll")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_kjhsh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h1v1t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kjhsh")
 text = "Back"
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

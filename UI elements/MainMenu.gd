@@ -39,7 +39,8 @@ func _on_play_pressed():
 	sound_queue.playMusic('button_click')
 	game_started.emit()
 	hide()
-	fade_out(sound_queue.SoundStreams['menu_music'])
+	fade(sound_queue.SoundStreams['menu_music'], -80)
+	sound_queue.playMusic('game_music')
 	
 func _on_exit_pressed():
 	sound_queue.playMusic('button_click')
@@ -48,11 +49,11 @@ func _on_exit_pressed():
 func _on_options_pressed():
 	sound_queue.playMusic('button_click')
 	anim.play("options_load")
-	
-func fade_out(stream_player):
+
+func fade(stream_player, volume):
 	# tween music volume down to 0
 	var tween = create_tween()
-	tween.tween_property(stream_player, "volume_db", -80, transition_duration)
+	tween.tween_property(stream_player, "volume_db", volume, transition_duration)
 	tween.tween_callback(stream_player.stop)
 
 func _on_credits_pressed():
