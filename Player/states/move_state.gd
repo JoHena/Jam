@@ -2,9 +2,9 @@ extends State
 
 signal spawn_enemy(enemy)
 
-var zombie = preload("res://Monsters/Zombie.tscn")
-var skeleton = preload("res://Monsters/Skeleton.tscn")
-var ghast = preload("res://Monsters/Ghast.tscn")
+var zombie = preload("res://Monsters/zombie.tscn")
+var skeleton = preload("res://Monsters/skeleton.tscn")
+var ghast = preload("res://Monsters/ghast.tscn")
 
 # Exports
 @export var SPEED: float = 100

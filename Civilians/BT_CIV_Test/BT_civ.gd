@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-signal gain_points
-
 # Scare Props
 @export var SCARED_AMOUNT: float = 20
 
